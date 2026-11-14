@@ -9,7 +9,7 @@
 | 0.3      | 14/11/2026 | Revisione completa di elicitazione, requisiti database, attributi di qualità e modello dati                   |
 | 0.4      | 14/11/2026 | Allineamento alla Specifica Logica (catalogo ricambi, giacenze ordini, notifica riparazione, tracciabilità)   |
 | 0.5      | 14/11/2026 | Correzioni dopo revisione: notifica del preventivo, richiesta di verifica al magazzino, Consultazione, RF-05, RF-07, RF-18, Gestisci Catalogo Ricambi |
-| 0.6      | 14/11/2026 | Rimozione classi operatore dal modello del dominio (Opzione 1), allineamento RF-18, A.4, use case e tracciabilità |
+| 0.6      | 14/11/2026 | Rimozione delle classi TecnicoRiparatore e ResponsabileMagazzino dal modello del dominio (non sono entità salvate nel database), allineamento RF-18, A.4, use case e tracciabilità |
 
 # Parte A – Elicitazione dei requisiti
 
