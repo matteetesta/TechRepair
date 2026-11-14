@@ -1,6 +1,6 @@
 # Tech Repair – Elicitazione dei requisiti e Specifica dei requisiti (IEEE 830)
 
-*Versione 0.4 – Team Tech Repair, Corso di Ingegneria del Software AA 2026/27.*
+*Versione 0.5 – Team Tech Repair, Corso di Ingegneria del Software AA 2026/27.*
 
 | Versione | Data       | Modifiche                                                                                                     |
 |----------|------------|---------------------------------------------------------------------------------------------------------------|
@@ -8,6 +8,7 @@
 | 0.2      | 12/11/2026 | Prime modifiche                                                                                               |
 | 0.3      | 14/11/2026 | Revisione completa di elicitazione, requisiti database, attributi di qualità e modello dati                   |
 | 0.4      | 14/11/2026 | Allineamento alla Specifica Logica (catalogo ricambi, giacenze ordini, notifica riparazione, tracciabilità)   |
+| 0.5      | 14/11/2026 | Correzioni dopo revisione: notifica del preventivo, richiesta di verifica al magazzino, Consultazione, RF-05, RF-07, RF-18, Gestisci Catalogo Ricambi |
 
 # Parte A – Elicitazione dei requisiti
 
@@ -37,7 +38,7 @@ Non è stato possibile coinvolgere gli stakeholder reali (ad esempio il titolare
 
 **S1 – Riparazione completata (scenario principale).** Il cliente porta il dispositivo in officina; il tecnico cerca il cliente col codice fiscale, registra il dispositivo e il guasto, incassa i 10 € anticipati di diagnosi e il sistema crea la scheda e genera la ricevuta di ingresso. Il tecnico diagnostica il guasto e inserisce i costi (impegnando i ricambi disponibili); il preventivo è inviato al cliente, che lo approva tramite il tecnico. Il tecnico esegue la riparazione e la chiude; alla consegna il sistema registra il pagamento del saldo (scontando i 10 € iniziali, con spesa minima di 10 €).
 
-**S2 – Pezzo non in magazzino.** Durante la composizione del preventivo il tecnico rileva che serve un ricambio esaurito. Il sistema richiede la verifica al Responsabile Magazzino, che conferma che il pezzo è ordinabile; il tecnico invia quindi il preventivo al cliente. Dopo l'approvazione del preventivo, il Responsabile Magazzino ordina il pezzo; la riparazione prosegue all'arrivo del ricambio.
+**S2 – Pezzo non in magazzino.** Durante la composizione del preventivo il tecnico rileva che serve un ricambio esaurito. Il tecnico richiede la verifica al Responsabile Magazzino, che conferma che il pezzo è ordinabile; il tecnico invia quindi il preventivo al cliente. Dopo l'approvazione del preventivo, il Responsabile Magazzino ordina il pezzo; la riparazione prosegue all'arrivo del ricambio.
 
 **S3 – Preventivo modificato o rifiutato.** Prima dell'approvazione il cliente può chiedere al tecnico di modificare il preventivo (voci o qualità originale/compatibile). Se il cliente rifiuta il preventivo (o rinuncia prima), i ricambi impegnati vengono rilasciati, la scheda passa ad "Annullata" e viene trattenuto solo il costo di diagnosi (10 €). Il dispositivo è riconsegnato non riparato.
 
@@ -182,9 +183,9 @@ Tech Repair è un'applicazione autonoma a riga di comando (console) con database
 | ID    | Requisito                                                                                                                                                                                         | Attore  | Priorità |
 |-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|----------|
 | RF-04 | Il sistema deve permettere al tecnico di registrare la diagnosi del guasto sulla scheda.                                                                                                          | Tecnico | Alta     |
-| RF-05 | Il sistema deve permettere al tecnico di inserire o modificare (solo prima dell'approvazione) il preventivo con costi di manodopera ed eventuali ricambi (originali o compatibili), anche in bozza, calcolandone il totale. | Tecnico | Alta     |
-| RF-06 | Il sistema deve rendere il preventivo disponibile al cliente (quando tutti i ricambi indicati sono impegnati o verificati come ordinabili) e registrarne l'invio.                                 | Tecnico | Alta     |
-| RF-07 | Il sistema deve permettere al tecnico di registrare la decisione del cliente di approvare o rifiutare il preventivo e registrare la decisione con data.                                           | Tecnico | Alta     |
+| RF-05 | Il sistema deve permettere al tecnico di inserire o modificare (solo prima dell'approvazione) il preventivo con costi di manodopera ed eventuali ricambi (originali o compatibili), anche in bozza, calcolandone il totale. Se in un preventivo già inviato viene inserito un ricambio esaurito (`giacenza = 0`), il sistema deve riportare il preventivo in bozza e la scheda in verifica magazzino, senza richiedere nuova verifica per i ricambi già verificati come ordinabili e mantenuti. | Tecnico | Alta     |
+| RF-06 | Il sistema deve rendere il preventivo disponibile al cliente (quando tutti i ricambi indicati sono impegnati o verificati come ordinabili), registrarne l'invio e notificarlo al cliente (anche in caso di modifica).                                 | Tecnico | Alta     |
+| RF-07 | Il sistema deve permettere al tecnico di registrare la decisione del cliente di approvare o rifiutare il preventivo, memorizzandola con la data.                                          | Tecnico | Alta     |
 | RF-08 | Il sistema deve bloccare modifiche al preventivo dopo l'approvazione e consentire la prosecuzione della riparazione solo dopo l'approvazione (e l'arrivo di eventuali ricambi da ordinare).       | Tecnico | Alta     |
 
 **Ricambi (Use Case: Ordina Pezzo di Ricambio, extend di Invia Preventivo)**
@@ -220,7 +221,7 @@ Tech Repair è un'applicazione autonoma a riga di comando (console) con database
 
 | ID    | Requisito                                                                                                                                                                                                   | Attore                 | Priorità |
 |-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|----------|
-| RF-18 | Il sistema deve validare gli input rifiutando campi obbligatori vuoti, codici fiscali o email non validi, seriali duplicati, importi monetari o giacenze negativi e manodopera nulla se non ci sono ricambi. | Sistema                | Alta     |
+| RF-18 | Il sistema deve validare gli input rifiutando: campi obbligatori vuoti; codici fiscali non di 16 caratteri alfanumerici o già presenti; telefoni non numerici; email non valide; seriali duplicati; codici ricambio duplicati; prezzi unitari non maggiori di zero; costi di manodopera o giacenze negativi; manodopera nulla quando non ci sono ricambi. | Sistema                | Alta     |
 | RF-19 | Il sistema deve permettere al Responsabile Magazzino di inserire nuovi ricambi a catalogo (codice, nome, qualità originale/compatibile, prezzo unitario fisso, giacenza iniziale e reperibilità).           | Responsabile Magazzino | Media    |
 
 ### 3.3 Requisiti di prestazione
@@ -294,8 +295,8 @@ Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. *
 | Attore principale | Tecnico Riparatore |
 | Attore secondario | Cliente, Responsabile Magazzino |
 | Condizioni iniziali | Esiste una scheda per il dispositivo accettato. |
-| Scenario principale | (1) Il tecnico registra la diagnosi del guasto sulla scheda. (2) Il tecnico inserisce i costi di manodopera e ricambi (anche salvando in bozza) e il sistema calcola il totale. (3) Il sistema verifica la disponibilità in magazzino dei ricambi indicati e impegna quelli disponibili. (4) Il sistema rende il preventivo disponibile al cliente e ne registra l'invio. (5) Il cliente approva il preventivo tramite il tecnico che registra la decisione con data. (6) La riparazione può proseguire. |
-| Flussi alternativi | **A**. Ricambio non disponibile in magazzino in bozza di preventivo: si attiva l'use case esteso *Ordina Pezzo di Ricambio*. **B**. Preventivo rifiutato dal cliente (o rinuncia): i ricambi impegnati vengono rilasciati, la scheda passa ad "Annullata" e si trattiene il solo costo di diagnosi. **C**. Ricambio fuori produzione: il sistema rilascia eventuali ricambi impegnati, notifica al cliente l'impossibilità di riparare e porta la scheda a "Non riparabile". **D**. Modifica del preventivo consentita solo prima dell’approvazione (con rilascio di eventuali ricambi sostituiti); se viene inserito un ricambio esaurito (`giacenza = 0`), il preventivo torna in bozza e la scheda torna in verifica magazzino (i ricambi già verificati come ordinabili e mantenuti non richiedono nuova verifica). |
+| Scenario principale | (1) Il tecnico registra la diagnosi del guasto sulla scheda. (2) Il tecnico inserisce i costi di manodopera e ricambi (anche salvando in bozza) e il sistema calcola il totale. (3) Il sistema verifica la disponibilità in magazzino dei ricambi indicati e impegna quelli disponibili. (4) Il sistema rende il preventivo disponibile al cliente, ne registra l'invio e invia una notifica simulata al cliente. (5) Il cliente approva il preventivo tramite il tecnico che registra la decisione con data. (6) La riparazione può proseguire. |
+| Flussi alternativi | **A**. Ricambio non disponibile in magazzino in bozza di preventivo: si attiva l'use case esteso *Ordina Pezzo di Ricambio*. **B**. Preventivo rifiutato dal cliente (o rinuncia): i ricambi impegnati vengono rilasciati, la scheda passa ad "Annullata" e si trattiene il solo costo di diagnosi. **C**. Ricambio fuori produzione: il sistema rilascia eventuali ricambi impegnati, notifica al cliente l'impossibilità di riparare e porta la scheda a "Non riparabile". **D**. Modifica del preventivo consentita solo prima dell’approvazione (con rilascio di eventuali ricambi sostituiti). Se i nuovi ricambi sono tutti disponibili, il sistema li impegna e invia al cliente una nuova notifica. Se viene inserito un ricambio esaurito (`giacenza = 0`), il preventivo torna in bozza e la scheda torna in verifica magazzino (i ricambi già verificati come ordinabili e mantenuti non richiedono nuova verifica). |
 | Condizioni finali | Preventivo approvato e riparazione autorizzata, oppure scheda annullata o non riparabile. |
 | Requisiti collegati | RF-04, RF-05, RF-06, RF-07, RF-08, RF-15, RF-16, RF-18 |
 
@@ -303,9 +304,10 @@ Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. *
 
 | Campo                    | Descrizione                                                                                                                                                                                                                                                                             |
 |--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Attore principale        | Responsabile Magazzino                                                                                                                                                                                                                                                                  |
+| Attore principale        | Responsabile Magazzino |
+| Attore secondario | Tecnico Riparatore |
 | Condizione di estensione | Durante la composizione della bozza in *Invia Preventivo*, un ricambio indicato non è disponibile in magazzino (`giacenza = 0`).                                                                                                                                                                               |
-| Scenario principale      | \(1\) Il sistema richiede la verifica al Responsabile Magazzino, che conferma che il pezzo è ordinabile. (2) Dopo l'approvazione del preventivo da parte del cliente, il Responsabile registra l'ordine di acquisto. (3) Alla ricezione del pezzo il Responsabile assegna il ricambio direttamente alla scheda collegata (da "da ordinare" a "impegnato", senza alterare la giacenza libera). (4) La riparazione prosegue. |
+| Scenario principale      | \(1\) Il tecnico richiede la verifica al Responsabile Magazzino, che conferma che il pezzo è ordinabile. (2) Dopo l'approvazione del preventivo da parte del cliente, il Responsabile registra l'ordine di acquisto. (3) Alla ricezione del pezzo il Responsabile assegna il ricambio direttamente alla scheda collegata (da "da ordinare" a "impegnato", senza alterare la giacenza libera). (4) La riparazione prosegue. |
 | Flussi alternativi       | Ricambio fuori produzione: l'ordine non viene registrato e si segue il flusso C di *Invia Preventivo*.                                                                                                                                                                                  |
 | Condizioni finali        | Ordine registrato e ricambio assegnato alla scheda all'arrivo.                                                                                                                                                                                                                          |
 | Requisiti collegati      | RF-09, RF-10, RF-11                                                                                                                                                                                                                                                                     |
@@ -327,17 +329,28 @@ Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. *
 | Campo               | Descrizione                                                                                                         |
 |---------------------|---------------------------------------------------------------------------------------------------------------------|
 | Attore principale   | Tecnico Riparatore, Responsabile Magazzino                                                                          |
-| Attore secondario   | Cliente                                                                                                             |
+| Attore secondario   | Nessuno                                                                                                             |
 | Condizioni iniziali | La scheda o il catalogo ricambi esistono nel sistema.                                                               |
 | Scenario principale | \(1\) L'operatore inserisce il criterio di ricerca (identificativo scheda, codice fiscale, seriale o stato). (2) Il sistema mostra lo stato, lo storico della scheda o l'inventario ricambi. |
 | Flussi alternativi  | Criterio o identificativo inesistente: il sistema mostra un messaggio di errore.                                    |
 | Condizioni finali   | Nessuna modifica ai dati.                                                                                           |
 | Requisiti collegati | RF-17                                                                                                               |
 
-**Use case inclusi e gestione catalogo:**
+**Gestisci Catalogo Ricambi**
+
+| Campo | Descrizione |
+|---|---|
+| Attore principale | Responsabile Magazzino |
+| Attore secondario | Nessuno |
+| Condizioni iniziali | Il Responsabile ha scelto il proprio ruolo dal menu iniziale. |
+| Scenario principale | (1) Il Responsabile inserisce codice, nome, qualità (originale o compatibile), prezzo unitario, giacenza iniziale e reperibilità del ricambio. (2) Il sistema valida i dati e registra il ricambio a catalogo. (3) Il ricambio diventa selezionabile dal tecnico nei preventivi. |
+| Flussi alternativi | Dati non validi o codice ricambio già presente: il sistema segnala l'errore e non crea il ricambio. |
+| Condizioni finali | Il ricambio è presente a catalogo. |
+| Requisiti collegati | RF-18, RF-19 |
+
+**Use case inclusi:**
 - *Genera Ricevuta di Ingresso* (incluso in *Accetta Dispositivo e Crea Scheda*): produce i dettagli della ricevuta con ID scheda, dati cliente e dispositivo (`RF-03`).
 - *Registra Pagamento* (incluso in *Consegna Dispositivo Riparato*): registra saldo positivo/nullo o rimborso `-10 €` con data e scheda (`RF-14`).
-- *Gestisci Catalogo Ricambi* (attore: Responsabile Magazzino): consente il censimento di nuovi ricambi a catalogo validando i campi (`RF-18`, `RF-19`).
 
 ## 5. Modello del dominio
 
