@@ -1,6 +1,6 @@
 # Tech Repair – Elicitazione dei requisiti e Specifica dei requisiti (IEEE 830)
 
-*Versione 0.5 – Team Tech Repair, Corso di Ingegneria del Software AA 2026/27.*
+*Versione 0.6 – Team Tech Repair, Corso di Ingegneria del Software AA 2026/27.*
 
 | Versione | Data       | Modifiche                                                                                                     |
 |----------|------------|---------------------------------------------------------------------------------------------------------------|
@@ -9,6 +9,7 @@
 | 0.3      | 14/11/2026 | Revisione completa di elicitazione, requisiti database, attributi di qualità e modello dati                   |
 | 0.4      | 14/11/2026 | Allineamento alla Specifica Logica (catalogo ricambi, giacenze ordini, notifica riparazione, tracciabilità)   |
 | 0.5      | 14/11/2026 | Correzioni dopo revisione: notifica del preventivo, richiesta di verifica al magazzino, Consultazione, RF-05, RF-07, RF-18, Gestisci Catalogo Ricambi |
+| 0.6      | 14/11/2026 | Rimozione classi operatore dal modello del dominio (Opzione 1), allineamento RF-18, A.4, use case e tracciabilità |
 
 # Parte A – Elicitazione dei requisiti
 
@@ -53,6 +54,10 @@ Ogni scenario è scomposto in affermazioni verificabili ("il sistema deve…"), 
 - **Invia Preventivo** (extend *Ordina Pezzo di Ricambio* se il pezzo non è in magazzino)
 
 - **Consegna Dispositivo Riparato** (include *Registra Pagamento*)
+
+- **Consultazione**
+
+- **Gestisci Catalogo Ricambi**
 
 Ogni flusso di eccezione (preventivo rifiutato, pezzo fuori produzione, richiesta di modifica del preventivo) diventa un flusso alternativo di uno use case, una transizione della state machine, un frammento alt del sequence diagram e almeno un test JUnit, con tracciabilità verso il Documento 5 (Testing).
 
@@ -221,7 +226,7 @@ Tech Repair è un'applicazione autonoma a riga di comando (console) con database
 
 | ID    | Requisito                                                                                                                                                                                                   | Attore                 | Priorità |
 |-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|----------|
-| RF-18 | Il sistema deve validare gli input rifiutando: campi obbligatori vuoti; codici fiscali non di 16 caratteri alfanumerici o già presenti; telefoni non numerici; email non valide; seriali duplicati; codici ricambio duplicati; prezzi unitari non maggiori di zero; costi di manodopera o giacenze negativi; manodopera nulla quando non ci sono ricambi. | Sistema                | Alta     |
+| RF-18 | Il sistema deve validare gli input rifiutando: campi obbligatori vuoti; codici fiscali non di 16 caratteri alfanumerici (o già presenti in registrazione di un nuovo cliente); telefoni non composti da sole cifre numeriche ed eventuale `+` iniziale; email non valide; seriali duplicati; codici ricambio duplicati; prezzi unitari non maggiori di zero; costi di manodopera o giacenze negativi; manodopera nulla quando non ci sono ricambi. | Sistema                | Alta     |
 | RF-19 | Il sistema deve permettere al Responsabile Magazzino di inserire nuovi ricambi a catalogo (codice, nome, qualità originale/compatibile, prezzo unitario fisso, giacenza iniziale e reperibilità).           | Responsabile Magazzino | Media    |
 
 ### 3.3 Requisiti di prestazione
@@ -272,7 +277,7 @@ Tech Repair è un'applicazione autonoma a riga di comando (console) con database
 
 **\[inserire use case diagram\]**
 
-Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. *Genera Ricevuta di Ingresso* e *Registra Pagamento* sono use case inclusi; *Ordina Pezzo di Ricambio* estende *Invia Preventivo*.
+Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. Gli use case principali sono *Accetta Dispositivo e Crea Scheda*, *Invia Preventivo*, *Consegna Dispositivo Riparato*, *Consultazione* e *Gestisci Catalogo Ricambi*; *Genera Ricevuta di Ingresso* e *Registra Pagamento* sono use case inclusi; *Ordina Pezzo di Ricambio* estende *Invia Preventivo*.
 
 ### 4.2 Descrizione degli use case
 
@@ -310,7 +315,7 @@ Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. *
 | Scenario principale      | \(1\) Il tecnico richiede la verifica al Responsabile Magazzino, che conferma che il pezzo è ordinabile. (2) Dopo l'approvazione del preventivo da parte del cliente, il Responsabile registra l'ordine di acquisto. (3) Alla ricezione del pezzo il Responsabile assegna il ricambio direttamente alla scheda collegata (da "da ordinare" a "impegnato", senza alterare la giacenza libera). (4) La riparazione prosegue. |
 | Flussi alternativi       | Ricambio fuori produzione: l'ordine non viene registrato e si segue il flusso C di *Invia Preventivo*.                                                                                                                                                                                  |
 | Condizioni finali        | Ordine registrato e ricambio assegnato alla scheda all'arrivo.                                                                                                                                                                                                                          |
-| Requisiti collegati      | RF-09, RF-10, RF-11                                                                                                                                                                                                                                                                     |
+| Requisiti collegati      | RF-09, RF-10, RF-11, RF-16                                                                                                                                                                                                                                                                     |
 
 **Consegna Dispositivo Riparato**
 
@@ -319,10 +324,10 @@ Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. *
 | Attore principale | Tecnico Riparatore |
 | Attore secondario | Cliente |
 | Condizioni iniziali | Il preventivo è stato approvato e la riparazione è stata eseguita, oppure la scheda è nello stato "Annullata" o "Non riparabile". |
-| Scenario principale | (1) Il tecnico chiude la riparazione e la scheda passa a "Riparata". (2) Il tecnico avvia la consegna e il sistema la consente per una scheda riparata. (3) Il tecnico registra il pagamento del saldo calcolato come `max(0 €, totale preventivo - 10 €)` con data e scheda associata (use case incluso *Registra Pagamento*). (4) Il sistema chiude la scheda. |
-| Flussi alternativi | **A**. Scheda annullata o non riparabile: il dispositivo è riconsegnato non riparato; se annullata il saldo è `0 €` (resta acquisito il costo di diagnosi), se non riparabile viene registrato il rimborso di `-10 €`. **B**. Scheda in uno stato che non consente la consegna (ad esempio in attesa di approvazione, in attesa di ricambio o in riparazione): il sistema rifiuta la consegna e mostra lo stato attuale della scheda. |
+| Scenario principale | (1) Il tecnico chiude la riparazione (aggiornando eventualmente il seriale univoco del dispositivo): la scheda passa a "Riparata" e il sistema notifica il completamento al cliente. (2) Il tecnico avvia la consegna e il sistema la consente per una scheda riparata. (3) Il tecnico registra il pagamento del saldo calcolato come `max(0 €, totale preventivo - 10 €)` con data e scheda associata (use case incluso *Registra Pagamento*). (4) Il sistema chiude la scheda. |
+| Flussi alternativi | **A**. Scheda annullata o non riparabile: il dispositivo è riconsegnato non riparato; se annullata il saldo è `0 €` (resta acquisito il costo di diagnosi), se non riparabile viene registrato il rimborso di `-10 €`. **B**. Scheda in uno stato che non consente la consegna (ad esempio in attesa di approvazione, in attesa di ricambio o in riparazione): il sistema rifiuta la consegna e mostra lo stato attuale della scheda. **C**. Aggiornamento del seriale con valore già presente su un altro dispositivo: il sistema segnala l'errore e rifiuta la modifica. |
 | Condizioni finali | Dispositivo consegnato, pagamento o rimborso registrato, scheda chiusa. |
-| Requisiti collegati | RF-12, RF-13, RF-14 |
+| Requisiti collegati | RF-12, RF-13, RF-14, RF-18 |
 
 **Consultazione**
 
@@ -367,8 +372,6 @@ Il modello del dominio mostra i concetti dell'officina e le relazioni tra loro, 
 | Ricambio              | `codiceRicambio`, `nome`, `qualita`, `prezzoUnitario`, `giacenza`, `reperibilita`       | Pezzo necessario per la riparazione (originale o compatibile), con prezzo fisso e giacenza in magazzino.      |
 | OrdineAcquisto        | `idOrdine`, `idSchedaAssociata`, `dataOrdine`, `dataRicezione`, `ricambiOrdinati`, `statoOrdine` | Richiesta di ricambi non disponibili associata alla scheda, registrata dal Responsabile Magazzino.        |
 | Pagamento             | `idPagamento`, `data`, `importo`, `tipo`                                                | Importo (diagnosi iniziale, saldo alla consegna o rimborso) collegato alla scheda.                            |
-| TecnicoRiparatore     | `idOperatore`, `nome`                                                                   | Operatore del sistema che gestisce accettazione, diagnosi, preventivi, riparazioni e consegne.                |
-| ResponsabileMagazzino | `idOperatore`, `nome`                                                                   | Operatore del sistema che gestisce il catalogo ricambi, le verifiche di reperibilità e gli ordini.            |
 
 ## 6. Tracciabilità
 
@@ -376,8 +379,8 @@ Il modello del dominio mostra i concetti dell'officina e le relazioni tra loro, 
 |-----------------------------------|---------------------------|-------------------------------------------------------|
 | Accetta Dispositivo e Crea Scheda | RF-01, RF-02, RF-03, RF-18| Dati non validi o scheda già attiva → test di validazione |
 | Invia Preventivo                  | RF-04 – RF-08, RF-18      | Preventivo modificato (RF-05) o rifiutato (RF-15)     |
-| Ordina Pezzo di Ricambio          | RF-09, RF-10, RF-11       | Pezzo fuori produzione (RF-16)                        |
-| Consegna Dispositivo Riparato     | RF-12, RF-13, RF-14       | Consegna di scheda annullata (RF-13) o non riparabile con rimborso `-10 €` (RF-14, RF-16) |
+| Ordina Pezzo di Ricambio          | RF-09, RF-10, RF-11, RF-16| Pezzo fuori produzione (RF-16)                        |
+| Consegna Dispositivo Riparato     | RF-12, RF-13, RF-14, RF-18| Consegna di scheda annullata (RF-13), non riparabile con rimborso `-10 €` (RF-14, RF-16) o seriale duplicato (RF-18) |
 | Consultazione                     | RF-17                     | Identificativo inesistente                            |
 | Gestisci Catalogo Ricambi         | RF-18, RF-19              | Dati non validi o codice duplicato → test di validazione |
 
