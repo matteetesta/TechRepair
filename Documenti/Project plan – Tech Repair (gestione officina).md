@@ -8,6 +8,7 @@ Tech Repair è il sistema che il nostro team di quattro persone sviluppa per il 
 |-|-|-|
 |1.0.0|12/10/2026|Versione iniziale|
 |1.1.0|09/11/2026|Revisione e allineamento di date, ore e work package agli obiettivi per sprint (sezione 2)|
+|1.1.1|14/11/2026|Correzione proprietario repository, allineamento flussi di eccezione e chiarimento WP2|
 
 ## 1. Introduction
 
@@ -30,7 +31,7 @@ Il sistema ha tre attori: Il Cliente, il Tecnico Riparatore e il Responsabile Ma
 
 **Flussi di eccezione**
 
-Se il cliente rifiuta il preventivo, la scheda passa ad "Annullato" e si addebita solo il costo di diagnosi. Se il pezzo di ricambio è fuori produzione, il sistema notifica l'impossibilità di riparare.
+Se il cliente rifiuta il preventivo, la scheda passa ad "Annullata" e viene trattenuto il solo costo di diagnosi versato all'accettazione. Se il pezzo di ricambio è fuori produzione, il sistema notifica l'impossibilità di riparare e rimborsa il costo di diagnosi.
 
 **Perimetro**
 
@@ -91,7 +92,7 @@ Tutto il lavoro passa da GitHub e segue regole comuni su repository, codice, mod
 
 **Repository e cartelle**
 
-* **Proprietà del repository:** Creato dall'account `AleBenUni` e condiviso con i professori Gargantini e Bonfanti. La root del repository prende il nome del software (`TechRepair`) e non deve contenere file di configurazione dell'IDE (es. `.project`).
+* **Proprietà del repository:** Creato dall'account `matteetesta` e condiviso con i professori Gargantini e Bonfanti. La root del repository prende il nome del software (`TechRepair`) e non deve contenere file di configurazione dell'IDE (es. `.project`).
 * **Struttura delle cartelle:**
 
   * **`Documenti/`:** Contiene la documentazione ufficiale e il file di progetto StarUML.
@@ -197,7 +198,7 @@ Quattro persone con ruoli di responsabilità distinti, ma tutte coinvolte in mod
 |Architetto|Architettura, modellazione UML (class, state machine, sequence, communication o timing, activity, component e package diagram), design pattern|Mattia Maggioni|
 |Responsabile sviluppo e test|Implementazione, test JUnit, copertura, metriche|Alessandro Benigni|
 
-I ruoli indicano chi risponde di un'area, non chi la svolge da solo: Ogni diagramma e ogni classe passano per la review di almeno un'altra persona.
+I ruoli indicano chi risponde di un'area, non chi la svolge da solo: ogni diagramma e ogni classe passano per la review di almeno un'altra persona.
 
 Ogni membro deve dare un contributo significativo. A fine progetto ciascuno valuta in privato il proprio impegno e quello dei compagni, come previsto dal corso.
 
@@ -236,7 +237,7 @@ La qualità si controlla con revisioni sistematiche, test automatici e metriche,
 Il lavoro è diviso in sette work package, ciascuno con ore, sprint e responsabile; la somma delle ore per work package e per sprint coincide con il budget di 144 ore e con gli obiettivi della sezione 2.
 
 * **WP1 – Gestione e setup** (14 ore: 10 nello sprint 0 e 4 di riepilogo negli sprint 1-4; Project Manager): Configurazione del repository, board, Project Plan, registro ore e riepiloghi di fine sprint. **Deliverable:** Documento 1 (Project Plan) e repository configurato.
-* **WP2 – Requisiti** (22 ore: 6 nello sprint 0 e 16 nello sprint 1; Project Manager e Analista dei requisiti): Software Life Cycle, Configuration Management, People Management and Team Organization. Avvio ed elicitazione dei requisiti nello sprint 0; specifica secondo IEEE 830, definizione degli attributi di Software Quality, use case con scenari ed eccezioni nello sprint 1. **Deliverable:** Stesura iniziale del Documento 2 (Gestione del progetto, completato con i dati a consuntivo nello sprint 4), Documento 3 (Requisiti) e use case diagram.
+* **WP2 – Gestione del progetto e Requisiti** (22 ore: 6 nello sprint 0 e 16 nello sprint 1; Project Manager e Analista dei requisiti): Per il Documento 2, Software Life Cycle, Configuration Management, People Management and Team Organization; per il Documento 3, avvio ed elicitazione dei requisiti nello sprint 0, specifica secondo IEEE 830, definizione degli attributi di Software Quality, use case con scenari ed eccezioni nello sprint 1. **Deliverable:** Stesura iniziale del Documento 2 (Gestione del progetto, completato con i dati a consuntivo nello sprint 4), Documento 3 (Requisiti) e use case diagram.
 * **WP3 – Modellazione UML** (35 ore: 15 nello sprint 1 e 20 nello sprint 2; Architetto): Class diagram (realizzato nello sprint 1 e consolidato nello sprint 2), state machine, sequence, communication o timing e activity diagram, prima generazione del codice da StarUML a fine sprint 2. **Deliverable:** Progetto StarUML con i diagrammi (distribuiti tra il Documento 3 (Requisiti) e il Documento 4 (Design)) e prime classi Java generate.
 * **WP4 – Architettura e design** (30 ore: 11 nello sprint 2 e 19 nello sprint 3; Architetto): Prime viste architetturali nello sprint 2; component e package diagram, stile architetturale, design pattern e libreria esterna Maven nello sprint 3. **Deliverable:** Documento 4 (Design).
 * **WP5 – Implementazione** (24 ore: 12 nello sprint 3 e 12 nello sprint 4; Responsabile sviluppo e test): Progetti Eclipse Maven, implementazione del nucleo nello sprint 3 e completamento del codice generato, database embedded, logging e interfaccia a riga di comando nello sprint 4. **Deliverable:** Codice funzionante dei flussi principali.
@@ -286,7 +287,7 @@ Ogni modifica a requisiti, piano o documenti nasce come issue GitHub e passa da 
 
 **Versioning dei documenti**
 
-Il Project Plan ha una tabella delle versioni in testa: Ogni revisione aggiunge una riga con data e modifiche. I documenti nel repository sono versionati con Git, quindi la cronologia dei commit fa da storico.
+Il Project Plan ha una tabella delle versioni in testa: ogni revisione aggiunge una riga con data e modifiche. I documenti nel repository sono versionati con Git, quindi la cronologia dei commit fa da storico.
 
 ## 14. Delivery
 
