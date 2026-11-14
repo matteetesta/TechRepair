@@ -70,7 +70,7 @@ Il calcolo del saldo finale alla consegna (implementato tramite il design patter
    * **Sola manodopera ($0$ ricambi):** Nessun impegno di magazzino richiesto; il preventivo può essere inviato subito.
    * **Ricambio già a catalogo come `FUORI_PRODUZIONE`:** Il sistema blocca il preventivo, rilascia in magazzino ($+1$) eventuali altri pezzi già marcati come `IMPEGNATO` nella bozza, porta la scheda a `NON_RIPARABILE` e invia la notifica simulata al cliente.
    * **Ricambio disponibile ($\text{giacenza} > 0$):** Appena aggiunto alla bozza, il sistema **scala immediatamente la giacenza ($\text{giacenza} - 1$)** e marca il pezzo nel preventivo come **`IMPEGNATO`**. Se il tecnico rimuove il pezzo dalla bozza, la giacenza torna subito a $+1$.
-   * **Ricambio esaurito ($\text{giacenza} = 0$):** Il pezzo viene aggiunto alla bozza come **`DA_ORDINARE`** (senza decrementare la giacenza che è già a $0$) e la scheda passa allo stato `IN_VERIFICA_MAGAZZINO`.
+   * **Ricambio esaurito ($\text{giacenza} = 0$):** Il pezzo viene aggiunto alla bozza come **`DA_ORDINARE`** (senza decrementare la giacenza che è già a $0$) e, alla richiesta di verifica da parte del tecnico, la scheda passa allo stato `IN_VERIFICA_MAGAZZINO`.
      * Il **Responsabile Magazzino** verifica la reperibilità dal fornitore:
        * Se **Fuori Produzione**: aggiorna il ricambio a catalogo come `FUORI_PRODUZIONE`; il sistema rilascia ($+1$) solo gli eventuali altri pezzi della scheda che erano marcati come `IMPEGNATO`, porta la scheda a `NON_RIPARABILE` e invia la notifica simulata al cliente.
        * Se **Ordinabile**: conferma la reperibilità a sistema (si assume che il pezzo resti ordinabile fino alla valutazione del cliente) e la scheda torna nello stato `IN_DIAGNOSI` pronta per l'invio del preventivo.
@@ -82,7 +82,7 @@ Il calcolo del saldo finale alla consegna (implementato tramite il design patter
 2. **Modifica del Preventivo (consentita solo nello stato `IN_ATTESA_APPROVAZIONE`):**
    * Su richiesta del cliente (aggiunta/rimozione voci o cambio qualità *Originale/Compatibile*), il Tecnico modifica il preventivo.
    * I ricambi rimossi o sostituiti che erano marcati come `IMPEGNATO` vengono rilasciati subito in magazzino ($+1$).
-   * Se i nuovi ricambi inseriti sono tutti disponibili ($\text{giacenza} > 0$), vengono scalati ($-1$) e marcati come `IMPEGNATO`; il sistema ricalcola il totale, invia la nuova notifica simulata e la scheda resta in `IN_ATTESA_APPROVAZIONE`.
+   * Se i nuovi ricambi inseriti sono tutti disponibili ($\text{giacenza} > 0$), vengono scalati ($-1$) e marcati come `IMPEGNATO`; il sistema ricalcola il totale, invia la nuova notifica simulata e la scheda resta in `IN_ATTESA_APPROVAZIONE` (eventuali ricambi `DA_ORDINARE` già verificati come `ORDINABILE` e mantenuti nel preventivo non richiedono una nuova verifica).
    * Se almeno un nuovo ricambio inserito ha $\text{giacenza} = 0$, viene marcato come `DA_ORDINARE`, il preventivo torna in `BOZZA` e la scheda **retrocede a `IN_VERIFICA_MAGAZZINO`** in attesa della conferma del Magazziniere (dopo la quale il Tecnico potrà reinviarlo).
 3. **Rifiuto del Preventivo:**
    * Il Tecnico registra il rifiuto: il preventivo passa a `RIFIUTATO`, tutti i ricambi marcati come **`IMPEGNATO`** vengono rilasciati in magazzino ($+1$) e la scheda passa allo stato `ANNULLATA`.
