@@ -10,6 +10,7 @@
 | 0.4      | 14/11/2026 | Allineamento alla Specifica Logica (catalogo ricambi, giacenze ordini, notifica riparazione, tracciabilità)   |
 | 0.5      | 14/11/2026 | Correzioni dopo revisione: notifica del preventivo, richiesta di verifica al magazzino, Consultazione, RF-05, RF-07, RF-18, Gestisci Catalogo Ricambi |
 | 0.6      | 14/11/2026 | Rimozione delle classi TecnicoRiparatore e ResponsabileMagazzino dal modello del dominio (non sono entità salvate nel database), allineamento RF-18, A.4, use case e tracciabilità |
+| 0.7 | 15/11/2026 | Allineamento del modello del dominio al class diagram (VoceRicambio, CambioStato), RD-01 |
 
 # Parte A – Elicitazione dei requisiti
 
@@ -239,7 +240,7 @@ Tech Repair è un'applicazione autonoma a riga di comando (console) con database
 
 | ID    | Requisito                                                                                                                                                                   |
 |-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| RD-01 | Il database deve persistere le entità Cliente, Dispositivo, Scheda di riparazione, Preventivo, Ricambio, Ordine di acquisto e Pagamento mantenendo le relazioni gerarchiche. |
+| RD-01 | Il database deve persistere le entità Cliente, Dispositivo, Scheda di riparazione, Preventivo, Ricambio, Ordine di acquisto e Pagamento, insieme alle voci di ricambio del preventivo e allo storico dei cambi di stato della scheda, mantenendo le relazioni gerarchiche. |
 | RD-02 | Il codice fiscale del cliente e il seriale del dispositivo devono essere univoci; ogni dispositivo può avere uno storico di schede ma al massimo una scheda attiva.         |
 | RD-03 | Il preventivo deve distinguere i ricambi fisicamente impegnati da magazzino da quelli esauriti da ordinare, e gli importi monetari devono essere memorizzati con due decimali. |
 
@@ -367,11 +368,13 @@ Il modello del dominio mostra i concetti dell'officina e le relazioni tra loro, 
 |-----------------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
 | Cliente               | `idCliente`, `nome`, `cognome`, `codiceFiscale`, `telefono`, `email`                    | Persona che porta il dispositivo in officina e approva o rifiuta il preventivo tramite il Tecnico Riparatore. |
 | Dispositivo           | `idDispositivo`, `seriale`, `marca`, `modello`                                          | Apparecchio da riparare associato al cliente, identificato da seriale univoco.                                |
-| SchedaRiparazione     | `idScheda`, `dataIngresso`, `dataChiusura`, `guastoDichiarato`, `diagnosiTecnica`, `statoCorrente`, `storicoStati` | Pratica associata a un dispositivo, con identificativo, date, guasto dichiarato, diagnosi, stato e storico. |
-| Preventivo            | `idPreventivo`, `statoPreventivo`, `dataInvio`, `costoManodopera`, `vociRicambio`, `totaleCalcolato`, `dataDecisione` | Stima dei costi (manodopera e ricambi impegnati/da ordinare) collegata alla scheda, con l'esito della decisione del cliente. |
+| SchedaRiparazione     | `idScheda`, `dataIngresso`, `dataChiusura`, `guastoDichiarato`, `diagnosiTecnica`, `statoCorrente` | Pratica associata a un dispositivo, con identificativo, date, guasto dichiarato, diagnosi, stato; i passaggi di stato sono conservati in CambioStato. |
+| Preventivo            | `idPreventivo`, `statoPreventivo`, `dataInvio`, `costoManodopera`, `totaleCalcolato`, `dataDecisione` | Stima dei costi (manodopera e ricambi impegnati/da ordinare) collegata alla scheda, con l'esito della decisione del cliente; i ricambi inseriti sono rappresentati da VoceRicambio. |
 | Ricambio              | `codiceRicambio`, `nome`, `qualita`, `prezzoUnitario`, `giacenza`, `reperibilita`       | Pezzo necessario per la riparazione (originale o compatibile), con prezzo fisso e giacenza in magazzino.      |
-| OrdineAcquisto        | `idOrdine`, `idSchedaAssociata`, `dataOrdine`, `dataRicezione`, `ricambiOrdinati`, `statoOrdine` | Richiesta di ricambi non disponibili associata alla scheda, registrata dal Responsabile Magazzino.        |
+| OrdineAcquisto        | `idOrdine`, `dataOrdine`, `dataRicezione`, `statoOrdine` | Richiesta di ricambi non disponibili associata alla scheda, registrata dal Responsabile Magazzino.        |
 | Pagamento             | `idPagamento`, `data`, `importo`, `tipo`                                                | Importo (diagnosi iniziale, saldo alla consegna o rimborso) collegato alla scheda.                            |
+| VoceRicambio          | `stato`                                                                                 | Ricambio inserito in un preventivo; lo stato indica se è impegnato a magazzino o da ordinare.                 |
+| CambioStato           | `stato`, `data`                                                                         | Registra ogni passaggio di stato della scheda, in ordine cronologico.                                         |
 
 ## 6. Tracciabilità
 
