@@ -1,6 +1,6 @@
 # Tech Repair – Elicitazione dei requisiti e Specifica dei requisiti (IEEE 830)
 
-*Versione 0.6 – Team Tech Repair, Corso di Ingegneria del Software AA 2026/27.*
+*Versione 0.7 – Team Tech Repair, Corso di Ingegneria del Software AA 2026/27.*
 
 | Versione | Data       | Modifiche                                                                                                     |
 |----------|------------|---------------------------------------------------------------------------------------------------------------|
