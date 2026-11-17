@@ -13163,33 +13163,6 @@
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
-							"_id": "AAAAAAGh6bJrBjblB6Y=",
-							"_parent": {
-								"$ref": "AAAAAAGh6aeUeNshRh8="
-							},
-							"end1": {
-								"_type": "UMLAssociationEnd",
-								"_id": "AAAAAAGh6bJrBjbmUaQ=",
-								"_parent": {
-									"$ref": "AAAAAAGh6bJrBjblB6Y="
-								},
-								"reference": {
-									"$ref": "AAAAAAGh6aeUeNshRh8="
-								}
-							},
-							"end2": {
-								"_type": "UMLAssociationEnd",
-								"_id": "AAAAAAGh6bJrBjbnMeI=",
-								"_parent": {
-									"$ref": "AAAAAAGh6bJrBjblB6Y="
-								},
-								"reference": {
-									"$ref": "AAAAAAGh6bFU/ye4v58="
-								}
-							}
-						},
-						{
-							"_type": "UMLAssociation",
 							"_id": "AAAAAAGh6bLRjTowR64=",
 							"_parent": {
 								"$ref": "AAAAAAGh6aeUeNshRh8="
@@ -13239,33 +13212,6 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAGh6bCqsxvl+bM="
-								}
-							}
-						},
-						{
-							"_type": "UMLAssociation",
-							"_id": "AAAAAAGh6cMg7jfXMjg=",
-							"_parent": {
-								"$ref": "AAAAAAGh6aeUeNshRh8="
-							},
-							"end1": {
-								"_type": "UMLAssociationEnd",
-								"_id": "AAAAAAGh6cMg7jfY6dU=",
-								"_parent": {
-									"$ref": "AAAAAAGh6cMg7jfXMjg="
-								},
-								"reference": {
-									"$ref": "AAAAAAGh6aeUeNshRh8="
-								}
-							},
-							"end2": {
-								"_type": "UMLAssociationEnd",
-								"_id": "AAAAAAGh6cMg7jfZP1E=",
-								"_parent": {
-									"$ref": "AAAAAAGh6cMg7jfXMjg="
-								},
-								"reference": {
-									"$ref": "AAAAAAGh6a4YmfXIkdU="
 								}
 							}
 						},
@@ -13469,14 +13415,6 @@
 				},
 				{
 					"_type": "UMLUseCase",
-					"_id": "AAAAAAGh6bFU/ye4v58=",
-					"_parent": {
-						"$ref": "AAAAAAGh6aQgktfoFkI="
-					},
-					"name": "verifica reperibilità ricambio"
-				},
-				{
-					"_type": "UMLUseCase",
 					"_id": "AAAAAAGh6bGcdCobego=",
 					"_parent": {
 						"$ref": "AAAAAAGh6aQgktfoFkI="
@@ -13491,19 +13429,6 @@
 					},
 					"name": "ordina pezzo di ricambio",
 					"ownedElements": [
-						{
-							"_type": "UMLInclude",
-							"_id": "AAAAAAGh6b4eArTWke0=",
-							"_parent": {
-								"$ref": "AAAAAAGh6bPqNnIz7tE="
-							},
-							"source": {
-								"$ref": "AAAAAAGh6bPqNnIz7tE="
-							},
-							"target": {
-								"$ref": "AAAAAAGh6bFU/ye4v58="
-							}
-						},
 						{
 							"_type": "UMLExtend",
 							"_id": "AAAAAAGh6cN4qUjO2Us=",
