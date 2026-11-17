@@ -12,6 +12,7 @@ Il Documento 2 dettaglia le regole già fissate nel Project Plan (Documento 1, v
 |-|-|-|
 |0.1|16/11/2026|Prima bozza: ciclo di vita, Configuration Management, organizzazione del team|
 |0.2|16/11/2026|Allineamento ai capitoli 3, 4 e 5 del libro: confronto con altri modelli, schema del piano SCM, coordinamento e stili di gestione|
+|1.0|17/11/2026|Correzione imprecisioni|
 
 ## 2\. Software Life Cycle
 
@@ -20,12 +21,11 @@ Il team segue un processo iterativo e incrementale ispirato a Scrum: sprint a du
 ### 2.1 Perché questo modello
 
 * **Team piccolo, poche ore.** Quattro persone con 36 ore ciascuna (144 ore di team) richiedono iterazioni brevi e verificabili.
-* **Modelli prima del codice.** Il corso chiede di spendere almeno il 70% del tempo su requisiti, modellazione e progettazione: nel piano i work package WP1-WP4 assorbono 101 ore su 144 (70,1%).
-* **Feedback prima di consolidare.** Lavorare a sprint permette al professore di commentare tramite issue le scelte di ogni iterazione, prima che diventino la base di quelle successive.
+* **Modelli prima del codice.** Il progetto chiede di spendere almeno il 70% del tempo su requisiti, modellazione e progettazione: nel piano i work package WP1-WP4 assorbono 101 ore su 144 (70,1%).
 
 Il processo è *iterativo* perché lo stesso artefatto viene ripreso e migliorato in più sprint (il class diagram nasce nello sprint 1 ed è consolidato nello sprint 2). È *incrementale* perché ogni sprint aggiunge un deliverable nuovo: requisiti, poi modelli, design, codice, test. Rispetto a Scrum il piano non prevede Product Owner e Scrum Master né riunioni giornaliere: il coordinamento passa dalla riunione settimanale e dalla bacheca Kanban (sezione 3.6).
 
-Rispetto ai modelli visti nel capitolo 3 del libro, il processo scelto è una combinazione. Il modello a cascata presuppone requisiti stabili e fasi che si chiudono una dopo l'altra, mentre qui requisiti e modelli si rivedono a ogni sprint in base al feedback. Un metodo agile puro evita il design anticipato, ma il corso chiede di dedicare almeno il 70% del tempo a requisiti, modelli e progettazione. Il processo adottato tiene quindi l'analisi e la modellazione UML in anticipo (la parte guidata dal piano) e consegna a incrementi con feedback frequente (la parte agile). Ha molti punti in comune con RUP: è iterativo, usa UML e parte dai casi d'uso. Con quattro persone, infine, un metodo leggero è adatto: il libro lo indica per progetti fino a circa 50 persone.
+Il processo scelto è una combinazione. Non abbiamo usato per esempio il modello a cascata, poichè presuppone requisiti stabili e fasi che si chiudono una dopo l'altra, mentre qui requisiti e modelli si rivedono a ogni sprint in base al feedback. Un metodo agile puro evita il design anticipato, ma il corso chiede di dedicare almeno il 70% del tempo a requisiti, modelli e progettazione. Il processo adottato tiene quindi l'analisi e la modellazione UML in anticipo (la parte guidata dal piano) e consegna a incrementi con feedback frequente (la parte agile). Ha molti punti in comune con RUP: è iterativo, usa UML e parte dai casi d'uso. Con quattro persone, infine, un metodo leggero è adatto.
 
 ### 2.2 Sprint e milestone
 
@@ -186,14 +186,14 @@ Un ruolo indica chi risponde di un'area, non chi la svolge da solo: tutti partec
 
 ### 4.2 Stile di gestione e decisioni
 
-Il piano indica come meccanismo di coordinamento l'adattamento reciproco, tipico della configurazione che Mintzberg chiama adhocracy: i membri si coordinano parlandosi e adattandosi, senza supervisione diretta né procedure rigide. Lo stile di gestione è quello orientato alla relazione e all'integrazione (nella classificazione di Reddin): le decisioni operative e architetturali si prendono per consenso nel team. È una scelta adatta a un lavoro innovativo e interdipendente come la modellazione, ma ha due punti deboli indicati dal libro, che il team contrasta così:
+Il piano indica come meccanismo di coordinamento l'adattamento reciproco: i membri si coordinano parlandosi e adattandosi, senza supervisione diretta né procedure rigide. Lo stile di gestione è quello orientato alla relazione e all'integrazione: le decisioni operative e architetturali si prendono per consenso nel team. È una scelta adatta a un lavoro innovativo e interdipendente come la modellazione, ma ha due punti deboli, che il team contrasta così:
 
-* **Riunioni infinite e caotiche** (stile di relazione). Se non si raggiunge un accordo entro la riunione settimanale, la decisione finale spetta al Project Manager, che la motiva con un commento nell'issue di riferimento. La riunione ha un orario fisso.
-* **Obiettivi individuali scollegati da quelli del progetto** (stile di integrazione). Gli obiettivi del progetto, in ordine di priorità, sono scritti nel Project Plan e valgono per tutti; le issue sono assegnate esplicitamente e le ore si registrano per issue.
+* Se non si raggiunge un accordo entro la riunione settimanale, la decisione finale spetta al Project Manager, che la motiva con un commento nell'issue di riferimento. La riunione ha un orario fisso (14:00 - 16:00).
+* Gli obiettivi del progetto, in ordine di priorità, sono scritti nel Project Plan e valgono per tutti; le issue sono assegnate esplicitamente e le ore si registrano per issue.
 
 Così nessuna discussione resta bloccata e la motivazione rimane consultabile.
 
-Tra le forme di organizzazione del team viste nel capitolo 5 (gerarchica, a matrice, capo programmatore, SWAT, agile, open source) la più vicina è il team agile: poche persone, canali di comunicazione brevi, nessuna gerarchia rigida e revisioni tra pari. Un team agile ha bisogno di autodisciplina, che qui è sostenuta dalle regole di GitHub (issue assegnate, review, merge approvato). La scelta di un gruppo piccolo segue anche l'indicazione del libro che la massima produttività si ottiene con pochi membri.
+Tra le forme di organizzazione del team, la più vicina è il team agile: poche persone, canali di comunicazione brevi, nessuna gerarchia rigida e revisioni tra pari. Un team agile ha bisogno di autodisciplina, che qui è sostenuta dalle regole di GitHub (issue assegnate, review, merge approvato).
 
 ### 4.3 Comunicazione
 
@@ -207,7 +207,7 @@ I docenti di riferimento, Prof. Gargantini e Prof.ssa Bonfanti, hanno accesso co
 
 ### 4.5 Impegno orario e carico
 
-Ogni membro dedica 36 ore tra il 12 ottobre 2026 e il 4 gennaio 2027: 4 ore nello sprint 0 e 4 ore a settimana per le 8 settimane degli sprint 1-4. È dentro la forchetta di 30-40 ore indicata dal corso.
+Ogni membro dedica 36 ore tra il 12 ottobre 2026 e il 4 gennaio 2027: 4 ore nello sprint 0 e 4 ore a settimana per le 8 settimane degli sprint 1-4.
 
 Il carico dipende anche dagli esami degli altri insegnamenti, che sono il rischio più probabile del piano. Le contromisure sono un calendario condiviso, il carico ridotto dello sprint 0 e il margine finale degli sprint 4 e 5. Per evitare che il lavoro si concentri su pochi, le issue sono assegnate esplicitamente, le ore si registrano per issue e il carico si controlla ogni settimana.
 
@@ -215,7 +215,7 @@ Il carico dipende anche dagli esami degli altri insegnamenti, che sono il rischi
 
 Ogni membro deve dare un contributo significativo. A fine progetto ciascuno valuta in privato il proprio impegno e quello dei compagni, come previsto dal corso; le statistiche oggettive per componente (commit, PR, review) si riporteranno in questo documento nello sprint 4.
 
-Le statistiche si leggono insieme al registro ore e non diventano una misura di produttività: il libro avverte che misurare il lavoro con una sola quantità, come le righe di codice, spinge a produrne di più e non di meglio. Le review, inoltre, giudicano il documento o il codice e non la persona che lo ha scritto.
+Le statistiche si leggono insieme al registro ore e non diventano una misura di produttività.
 
 ## 5\. Dati a consuntivo
 
