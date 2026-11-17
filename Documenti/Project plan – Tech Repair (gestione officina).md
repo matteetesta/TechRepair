@@ -103,7 +103,7 @@ Tutto il lavoro passa da GitHub e segue regole comuni su repository, codice, mod
 
 **Procedura Git e Kanban**
 
-* **Branch `main` stabile (baseline):** Il ramo `main` rappresenta la linea di base (baseline) degli elementi di configurazione approvati (codice, modelli e documenti). Nessuna modifica viene effettuata direttamente su di esso.
+* **Branch `main` stabile (baseline):** Il ramo `main` rappresenta la linea di base (baseline) degli elementi di configurazione approvati (codice, modelli e documenti). Su di esso vengono effettuate solo modifiche minori che non necessitano di review.
 * **Apertura dei branch:** Ogni attività parte da un'issue con milestone e assegnatario; le label (documentation, enhancement, bug e Critical Section) sono riservate alle issue di particolare importanza. Il branch associato deve essere creato direttamente dall'interfaccia web dell'issue su GitHub, accettando la nomenclatura automatica predefinita.
 * **Commit piccoli e frequenti:** Ogni commit deve avere un titolo esplicativo ed eventuale descrizione dettagliata. Sono vietati messaggi generici.
 * **Una pull request per ogni branch:** Ogni branch richiede l'apertura di una pull request (PR), che risulterà nativamente collegata all'issue di origine grazie alla creazione guidata del ramo.
@@ -115,7 +115,7 @@ Tutto il lavoro passa da GitHub e segue regole comuni su repository, codice, mod
 
 **Pull request e review**
 
-* **Nessun push diretto su `main`:** Ogni modifica passa da una pull request.
+* **Quasi nessun push diretto su `main`:** Ogni modifica passa da una pull request, tranne modifiche minori che non necessitano di review.
 * **Approvazione mirata:** Per poter effettuare il merge, serve l'approvazione del Project Manager. In caso di sua indisponibilità, l'approvazione può essere concessa da un membro del team diverso dall'autore, scelto in base alla competenza specifica del task.
 * **Strategia di merge:** Il merge viene eseguito solo dopo aver ottenuto l'approvazione. Si utilizza il merge normale (Create a merge commit) e non lo squash, per mantenere intatta la cronologia dei singoli commit nella storia del progetto.
 * **Statistiche finali:** A fine progetto, il Documento 2 (Gestione del progetto) riporterà i dati analitici su commit, PR aperte e review effettuate per ciascun componente del team.
