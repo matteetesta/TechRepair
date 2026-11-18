@@ -1,6 +1,6 @@
 # Tech Repair – Elicitazione dei requisiti e Specifica dei requisiti (IEEE 830)
 
-*Versione 0.8 – Team Tech Repair, Corso di Ingegneria del Software AA 2026/27.*
+*Versione 0.9 – Team Tech Repair, Corso di Ingegneria del Software AA 2026/27.*
 
 | Versione | Data       | Modifiche                                                                                                     |
 |----------|------------|---------------------------------------------------------------------------------------------------------------|
@@ -12,6 +12,7 @@
 | 0.6      | 14/11/2026 | Rimozione delle classi TecnicoRiparatore e ResponsabileMagazzino dal modello del dominio (non sono entità salvate nel database), allineamento RF-18, A.4, use case e tracciabilità |
 | 0.7 | 15/11/2026 | Allineamento del modello del dominio al class diagram (VoceRicambio, CambioStato), RD-01 |
 | 0.8 | 18/11/2026 | Correzione use case: Ordina Pezzo di Ricambio non estende più Invia Preventivo; Responsabile Magazzino attore secondario di Invia Preventivo; ridefiniti RF-09, RF-10, RF-11; aggiornata tracciabilità |
+| 0.9 | 18/11/2026 | Inserite immagini vettoriali SVG di Use Case Diagram e Class Diagram del dominio (`Documenti/Immagini/`) |
 
 # Parte A – Elicitazione dei requisiti
 
@@ -279,7 +280,7 @@ Tech Repair è un'applicazione autonoma a riga di comando (console) con database
 
 ### 4.1 Use case diagram
 
-**\[inserire use case diagram\]**
+![Use Case Diagram](Immagini/UseCaseDiagram.svg)
 
 Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. Gli use case principali sono *Accetta Dispositivo e Crea Scheda*, *Invia Preventivo*, *Ordina Pezzo di Ricambio*, *Consegna Dispositivo Riparato*, *Consultazione* e *Gestisci Catalogo Ricambi*; *Genera Ricevuta di Ingresso* e *Registra Pagamento* sono use case inclusi. *Ordina Pezzo di Ricambio* è uno use case autonomo, svolto dal Responsabile Magazzino dopo l'approvazione del preventivo; la verifica della reperibilità dei ricambi esauriti avviene invece dentro *Invia Preventivo*, dove il Responsabile Magazzino è attore secondario.
 
@@ -363,7 +364,7 @@ Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. G
 
 ## 5. Modello del dominio
 
-**\[Inserire qui l'immagine del class diagram del dominio\]**
+![Class Diagram del Dominio](Immagini/ClassDiagram_Dominio.svg)
 
 Il modello del dominio mostra i concetti dell'officina e le relazioni tra loro, senza dettagli di implementazione (il class diagram di design è nel Documento 4). Le classi principali, con gli attributi essenziali in notazione CamelCase, sono le seguenti:
 
