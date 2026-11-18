@@ -59,7 +59,7 @@ Ogni flusso di eccezione (preventivo rifiutato, pezzo fuori produzione, richiest
 ### 2.5 Evidenze di iterazione finora
 
 * **Project Plan.** Quattro versioni in cinque settimane: 1.0.0 (12/10), 1.1.0 (09/11, riallineamento di date, ore e work package agli obiettivi per sprint), 1.1.1 (14/11, correzione del proprietario del repository, allineamento dei flussi di eccezione, chiarimento del WP2) e 1.1.2 (16/11, label solo per le issue importanti, Priority board, riunione del lunedì).
-* **Requisiti.** Sette versioni tra l'11 e il 15 novembre (0.1-0.7), con correzioni dopo revisione (0.5), rimozione di classi che non sono entità salvate (0.6) e allineamento del modello del dominio al class diagram (0.7). I diagrammi UML sono ancora da inserire nel documento.
+* **Requisiti.** Sette versioni tra l'11 e il 15 novembre (0.1-0.8), con correzioni dopo revisione (0.5), rimozione di classi che non sono entità salvate (0.6) e allineamento del modello del dominio al class diagram (0.7). I diagrammi UML sono ancora da inserire nel documento.
 * **Sprint 0.** La scadenza era il 9 novembre, ma la milestone è ancora aperta (1 issue su 9 non chiusa al 16 novembre) perché si attende l'approvazione del Project Plan da parte del Prof. Gargantini. È il primo scostamento rispetto al calendario iniziale; date e ore sono state riallineate nella revisione 1.1.0 del piano.
 
 ### 2.6 Corrispondenza con Scrum, Kanban e MDA
