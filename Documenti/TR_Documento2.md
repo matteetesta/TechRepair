@@ -1,6 +1,6 @@
 # Documento 2
 
-## 1. Introduzione
+## 1\. Introduzione
 
 Questo documento descrive come il team Tech Repair gestisce il progetto: processo iterativo e incrementale, Configuration Management su GitHub e organizzazione del team. È la prima versione, scritta nello sprint 1; i dati a consuntivo (ore effettive, statistiche di commit, PR e review, scostamenti dal piano) si aggiungono nello sprint 4.
 
@@ -14,7 +14,7 @@ Il Documento 2 dettaglia le regole già fissate nel Project Plan (Documento 1, v
 |0.2|16/11/2026|Allineamento ai capitoli 3, 4 e 5 del libro: confronto con altri modelli, schema del piano SCM, coordinamento e stili di gestione|
 |1.0|17/11/2026|Correzione imprecisioni|
 
-## 2. Software Life Cycle
+## 2\. Software Life Cycle
 
 Il team segue un processo iterativo e incrementale ispirato a Scrum: sprint a durata fissa, ciascuno legato a una milestone GitHub, in cui requisiti e modelli vengono raffinati a ogni iterazione. Il progetto è quasi completo il 4 gennaio 2027 e la consegna è fissata all'8 gennaio 2027.
 
@@ -76,7 +76,7 @@ Gli elementi del processo corrispondono a Scrum e Kanban:
 
 Il piano prevede inoltre un approccio MDA (Model-Driven Architecture) parziale. I requisiti e il modello del dominio del Documento 3 sono il livello più astratto (CIM, indipendente dal calcolo); il class diagram di design è il modello da cui StarUML genera una sola volta le classi Java; il resto, compresi i corpi dei metodi, si scrive a mano. Non è quindi un MDA completo: dopo la generazione la manutenzione avviene sul codice e non sul modello.
 
-## 3. Configuration Management
+## 3\. Configuration Management
 
 Tutto il lavoro passa da GitHub e nessuna modifica arriva su `main` senza issue, pull request e review: così ogni scelta resta tracciata e si vede chi ha fatto cosa. La sezione segue lo schema del piano di gestione della configurazione del capitolo 4 del libro (standard IEEE 828): gestione, attività (identificazione, controllo, contabilità dello stato e audit, sezioni 3.2-3.7), calendario, risorse e manutenzione del piano.
 
@@ -169,7 +169,7 @@ Le attività di configurazione seguono il ritmo degli sprint:
 
 Questa sezione si aggiorna come ogni altro documento: una modifica nasce come issue e passa da una pull request (sezione 3.5). I documenti con tabella versioni in testa (Project Plan, Requisiti, questo documento) aggiungono una riga a ogni revisione, con data e modifiche; la storia di Git fa da storico fine. La consegna finale è un unico PDF diviso in capitoli con i sei documenti, con le immagini dei diagrammi UML esportate nel testo. Dopo la consegna si correggono eventuali errori, senza creare nuovi documenti né nuovi progetti Java.
 
-## 4. People management e organizzazione del team
+## 4\. People management e organizzazione del team
 
 Il team ha quattro persone, ciascuna con un'area di responsabilità, e lavora come una squadra agile senza gerarchia rigida: le decisioni si prendono per consenso e, se il consenso manca, decide il Project Manager motivando la scelta.
 
@@ -217,7 +217,7 @@ Ogni membro deve dare un contributo significativo. A fine progetto ciascuno valu
 
 Le statistiche si leggono insieme al registro ore e non diventano una misura di produttività.
 
-## 5. Dati a consuntivo
+## 5\. Dati a consuntivo
 
 Questa sezione si compila a fine progetto (sprint 4): le ore stimate vengono dal Project Plan, le altre colonne dal registro ore e dalle statistiche di GitHub.
 
@@ -227,8 +227,8 @@ La stima per ciascun membro è di 4 ore nello sprint 0 e 8 ore in ciascuno degli
 
 |Sprint|Periodo|Ore stimate (team)|Testa|Rota|Maggioni|Benigni|Ore effettive (team)|
 |-|-|-|-|-|-|-|-|
-|Sprint 0|12 ott - 9 nov|16||||||
-|Sprint 1|10 - 23 nov|32||||||
+|Sprint 0|12 ott - 9 nov|16|8.30|0|0|4.30|13|
+|Sprint 1|10 - 23 nov|32|10|9|5|10|34|
 |Sprint 2|24 nov - 7 dic|32||||||
 |Sprint 3|8 - 21 dic|32||||||
 |Sprint 4|22 dic - 4 gen|32||||||
@@ -250,8 +250,8 @@ La stima per ciascun membro è di 4 ore nello sprint 0 e 8 ore in ciascuno degli
 |Sprint|Scostamento rispetto al piano|Causa|Azione|
 |-|-|-|-|
 |Sprint 0|Scadenza del 9 novembre superata: 1 issue su 9 ancora aperta al 16/11|Attesa dell'approvazione del Project Plan da parte del Prof. Gargantini|Date, ore e work package riallineati nel Project Plan 1.1.0; milestone da chiudere dopo l'approvazione del piano|
-|Sprint 1||||
-|Sprint 2||||
+|Sprint 1|Chiuso il 18/11, cinque giorni prima della scadenza del 23/11|Lavoro dello sprint completato in anticipo|Sprint 2 avviato subito, senza modificare il Project Plan|
+|Sprint 2|Avvio anticipato dal 24/11 al 18/11, con scadenza del 7/12 e 32 ore invariate|Sprint 1 concluso prima|Tempo extra usato come margine per il blocco del file StarUML|
 |Sprint 3||||
 |Sprint 4||||
 |Sprint 5||||
