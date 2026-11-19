@@ -13,6 +13,7 @@ Il Documento 2 dettaglia le regole già fissate nel Project Plan (Documento 1, v
 |0.1|16/11/2026|Prima bozza: ciclo di vita, Configuration Management, organizzazione del team|
 |0.2|16/11/2026|Allineamento ai capitoli 3, 4 e 5 del libro: confronto con altri modelli, schema del piano SCM, coordinamento e stili di gestione|
 |1.0|17/11/2026|Correzione imprecisioni|
+|1.1|19/11/2026|Correzione imprecisioni|
 
 ## 2\. Software Life Cycle
 
@@ -227,8 +228,8 @@ La stima per ciascun membro è di 4 ore nello sprint 0 e 8 ore in ciascuno degli
 
 |Sprint|Periodo|Ore stimate (team)|Testa|Rota|Maggioni|Benigni|Ore effettive (team)|
 |-|-|-|-|-|-|-|-|
-|Sprint 0|12 ott - 9 nov|16|8.30|0|0|4.30|13|
-|Sprint 1|10 - 23 nov|32|10|9|5|10|34|
+|Sprint 0|12 ott - 9 nov|16|8.50|0|0|4.50|13|
+|Sprint 1|10 - 23 nov|32|10|9|6|10|35|
 |Sprint 2|24 nov - 7 dic|32||||||
 |Sprint 3|8 - 21 dic|32||||||
 |Sprint 4|22 dic - 4 gen|32||||||
@@ -250,8 +251,8 @@ La stima per ciascun membro è di 4 ore nello sprint 0 e 8 ore in ciascuno degli
 |Sprint|Scostamento rispetto al piano|Causa|Azione|
 |-|-|-|-|
 |Sprint 0|Scadenza del 9 novembre superata: 1 issue su 9 ancora aperta al 16/11|Attesa dell'approvazione del Project Plan da parte del Prof. Gargantini|Date, ore e work package riallineati nel Project Plan 1.1.0; milestone da chiudere dopo l'approvazione del piano|
-|Sprint 1|Chiuso il 18/11, cinque giorni prima della scadenza del 23/11|Lavoro dello sprint completato in anticipo|Sprint 2 avviato subito, senza modificare il Project Plan|
-|Sprint 2|Avvio anticipato dal 24/11 al 18/11, con scadenza del 7/12 e 32 ore invariate|Sprint 1 concluso prima|Tempo extra usato come margine per il blocco del file StarUML|
+|Sprint 1|Chiuso il 19/11, quattro giorni prima della scadenza del 23/11|Lavoro dello sprint completato in anticipo|Sprint 2 avviato subito, senza modificare il Project Plan|
+|Sprint 2|Avvio anticipato dal 24/11 al 19/11, con scadenza del 7/12 e 32 ore invariate|Sprint 1 concluso prima|Tempo extra usato come margine per il blocco del file StarUML|
 |Sprint 3||||
 |Sprint 4||||
 |Sprint 5||||
