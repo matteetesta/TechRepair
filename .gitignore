@@ -9,6 +9,7 @@ bin/
 # Log & Crash Reports
 # ==========================================
 *.log
+logs/
 hs_err_pid*
 replay_pid*
 
