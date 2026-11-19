@@ -1,10 +1,10 @@
 # Documento 2
 
-## 1\. Introduzione
+## 1. Introduzione
 
 Questo documento descrive come il team Tech Repair gestisce il progetto: processo iterativo e incrementale, Configuration Management su GitHub e organizzazione del team. È la prima versione, scritta nello sprint 1; i dati a consuntivo (ore effettive, statistiche di commit, PR e review, scostamenti dal piano) si aggiungono nello sprint 4.
 
-Il Documento 2 dettaglia le regole già fissate nel Project Plan (Documento 1, versione 1.1.2 del 16/11/2026) senza modificarle: calendario, ore e ruoli sono gli stessi. Corrisponde al work package WP2 del piano, in carico al Project Manager e all'Analista dei requisiti.
+Il Documento 2 dettaglia le regole già fissate nel Project Plan (Documento 1, versione 1.1.3 del 19/11/2026) senza modificarle: calendario, ore e ruoli sono gli stessi. Corrisponde al work package WP2 del piano, in carico al Project Manager e all'Analista dei requisiti.
 
 **Versioni**
 
@@ -14,8 +14,9 @@ Il Documento 2 dettaglia le regole già fissate nel Project Plan (Documento 1, v
 |0.2|16/11/2026|Allineamento ai capitoli 3, 4 e 5 del libro: confronto con altri modelli, schema del piano SCM, coordinamento e stili di gestione|
 |1.0|17/11/2026|Correzione imprecisioni|
 |1.1|19/11/2026|Correzione imprecisioni|
+|1.2|19/11/2026|Ruolo Configuration Manager e supporto, regola Critical Section fino al merge, micro-modifiche su main e pulizia formattazione|
 
-## 2\. Software Life Cycle
+## 2. Software Life Cycle
 
 Il team segue un processo iterativo e incrementale ispirato a Scrum: sprint a durata fissa, ciascuno legato a una milestone GitHub, in cui requisiti e modelli vengono raffinati a ogni iterazione. Il progetto è quasi completo il 4 gennaio 2027 e la consegna è fissata all'8 gennaio 2027.
 
@@ -26,7 +27,7 @@ Il team segue un processo iterativo e incrementale ispirato a Scrum: sprint a du
 
 Il processo è *iterativo* perché lo stesso artefatto viene ripreso e migliorato in più sprint (il class diagram nasce nello sprint 1 ed è consolidato nello sprint 2). È *incrementale* perché ogni sprint aggiunge un deliverable nuovo: requisiti, poi modelli, design, codice, test. Rispetto a Scrum il piano non prevede Product Owner e Scrum Master né riunioni giornaliere: il coordinamento passa dalla riunione settimanale e dalla bacheca Kanban (sezione 3.6).
 
-Il processo scelto è una combinazione. Non abbiamo usato per esempio il modello a cascata, poichè presuppone requisiti stabili e fasi che si chiudono una dopo l'altra, mentre qui requisiti e modelli si rivedono a ogni sprint in base al feedback. Un metodo agile puro evita il design anticipato, ma il corso chiede di dedicare almeno il 70% del tempo a requisiti, modelli e progettazione. Il processo adottato tiene quindi l'analisi e la modellazione UML in anticipo (la parte guidata dal piano) e consegna a incrementi con feedback frequente (la parte agile). Ha molti punti in comune con RUP: è iterativo, usa UML e parte dai casi d'uso. Con quattro persone, infine, un metodo leggero è adatto.
+Il processo scelto è una combinazione. Non abbiamo usato per esempio il modello a cascata, poiché presuppone requisiti stabili e fasi che si chiudono una dopo l'altra, mentre qui requisiti e modelli si rivedono a ogni sprint in base al feedback. Un metodo agile puro evita il design anticipato, ma il corso chiede di dedicare almeno il 70% del tempo a requisiti, modelli e progettazione. Il processo adottato tiene quindi l'analisi e la modellazione UML in anticipo (la parte guidata dal piano) e consegna a incrementi con feedback frequente (la parte agile). Ha molti punti in comune con RUP: è iterativo, usa UML e parte dai casi d'uso. Con quattro persone, infine, un metodo leggero è adatto.
 
 ### 2.2 Sprint e milestone
 
@@ -77,27 +78,27 @@ Gli elementi del processo corrispondono a Scrum e Kanban:
 
 Il piano prevede inoltre un approccio MDA (Model-Driven Architecture) parziale. I requisiti e il modello del dominio del Documento 3 sono il livello più astratto (CIM, indipendente dal calcolo); il class diagram di design è il modello da cui StarUML genera una sola volta le classi Java; il resto, compresi i corpi dei metodi, si scrive a mano. Non è quindi un MDA completo: dopo la generazione la manutenzione avviene sul codice e non sul modello.
 
-## 3\. Configuration Management
+## 3. Configuration Management
 
-Tutto il lavoro passa da GitHub e nessuna modifica arriva su `main` senza issue, pull request e review: così ogni scelta resta tracciata e si vede chi ha fatto cosa. La sezione segue lo schema del piano di gestione della configurazione del capitolo 4 del libro (standard IEEE 828): gestione, attività (identificazione, controllo, contabilità dello stato e audit, sezioni 3.2-3.7), calendario, risorse e manutenzione del piano.
+Tutto il lavoro passa da GitHub e, di norma, ogni modifica arriva su `main` tramite issue, pull request e review (salvo piccole modifiche gestite direttamente su `main` da Matteo Testa o Alessandro Benigni, come indicato nelle sezioni 3.2 e 3.3): così ogni scelta resta tracciata e si vede chi ha fatto cosa. La sezione segue lo schema del piano di gestione della configurazione del capitolo 4 del libro (standard IEEE 828): gestione, attività (identificazione, controllo, contabilità dello stato e audit, sezioni 3.2-3.7), calendario, risorse e manutenzione del piano.
 
 ### 3.1 Gestione SCM: organizzazione, responsabilità e autorità
 
-* **Configuration Manager.** Matteo Testa e Alessandro Benigni: tengono in ordine il repository, gestiscono board e issue, prenotano il file StarUML (sezione 3.4), valuta le richieste di modifica e approvano i merge.
+* **Configuration Manager.** Matteo Testa è il Configuration Manager titolare, con il supporto di Alessandro Benigni in caso di necessità: tiene in ordine il repository, gestisce board e issue, coordina la prenotazione del file StarUML (sezione 3.4), valuta le richieste di modifica e approva i merge.
 * **Comitato di controllo.** In un progetto di quattro persone non c'è un Configuration Control Board separato: ne svolge la funzione il Project Manager, sentito il team. Se non è disponibile, l'approvazione di una PR può darla un altro membro, diverso dall'autore, scelto per competenza.
 * **Tutti i membri.** Ognuno lavora su branch propri e modifica la baseline solo con una pull request.
 * **Docenti.** Il Prof. Gargantini e la Prof.ssa Bonfanti hanno accesso completo al repository e possono dare approvazioni e feedback tramite GitHub.
 
 ### 3.2 Identificazione degli elementi di configurazione e baseline
 
-Gli elementi di configurazione sono i sei documenti del progetto, il file StarUML con i diagrammi, il codice e i progetti Maven, i test JUnit e il `README.md`. Il ramo `main` è la baseline: contiene solo elementi approvati, cioè rivisti con una pull request, e si modifica solo con la procedura di controllo delle sezioni 3.3-3.5. Su di esso vengono fatte direttamente solo modifiche minime che non necessitano di review.
+Gli elementi di configurazione sono i sei documenti del progetto, il file StarUML con i diagrammi, il codice e i progetti Maven, i test JUnit e il `README.md`. Il ramo `main` è la baseline: contiene solo elementi approvati, cioè rivisti con una pull request, e si modifica solo con la procedura di controllo delle sezioni 3.3-3.5. Su di esso vengono fatte direttamente solo modifiche piccole che non necessitano di review (a cura del Configuration Manager o di Alessandro Benigni in caso di necessità).
 
 Il repository è organizzato così:
 
 * **Proprietà e accessi.** Creato dall'account `matteetesta` e condiviso con il Prof. Gargantini (`garganti`) e la Prof.ssa Bonfanti (`silviabonfanti`).
 * **Root e cartelle.** La root si chiama `TechRepair` e non contiene file di configurazione dell'IDE (per esempio `.project`). `Documenti/` contiene la documentazione ufficiale e il file StarUML; `Codice/` contiene i progetti Eclipse.
 * **Progetti Eclipse.** Sono progetti Maven con nomi caratteristici, mai generici. I file `.project`, `.classpath` e `pom.xml` vanno sempre committati, perché tengono allineato l'ambiente di sviluppo.
-* **`.gitignore`.** Esclude i file `.class` e la cartella `target/`.
+* **`.gitignore`.** Esclude i file `.class`, le cartelle `target/`, `bin/`, `.settings/` e i file di log.
 * **Portabilità.** Niente percorsi assoluti e database embedded, così il repository funziona su qualsiasi postazione.
 
 ### 3.3 Controllo: dall'issue al merge
@@ -109,14 +110,14 @@ Il repository è organizzato così:
 5. **Review e approvazione.** Almeno un altro membro rivede la PR. Per il merge serve l'approvazione del Project Manager; se non è disponibile, la dà un membro diverso dall'autore, scelto per competenza sul task.
 6. **Merge.** Solo dopo l'approvazione, con *Create a merge commit* e non con lo squash, per conservare la cronologia dei singoli commit. L'issue passa a *Done*.
 
-Il push diretto su `main` è ammesso in caso di modifiche minime che non richiedono una review. La cronologia intera serve anche a fine progetto: il Documento 2 riporterà commit, PR aperte e review per ciascun componente.
+Il push diretto su `main` è ammesso solo per modifiche piccole che non richiedono una review (da parte del Configuration Manager o di Alessandro Benigni per necessità). La cronologia intera serve anche a fine progetto: il Documento 2 riporterà commit, PR aperte e review per ciascun componente.
 
 ### 3.4 Controllo: il file StarUML (`.mdj`)
 
 Il file StarUML è unico e non si può unire con un merge testuale: serve quindi un blocco esclusivo (lock), come per gli elementi in modifica descritti nel libro. Ci lavora una sola persona alla volta.
 
 * Chi vuole modificarlo lo prenota tramite il Project Manager, che contrassegna l'issue con la label *Critical Section*.
-* Nessun altro tocca il modello finché quell'issue non passa a *In Review*.
+* Nessun altro tocca il modello finché quell'issue non viene chiusa con il merge su `main` (stato *Done*) e la label *Critical Section* non viene rimossa.
 * Prima di aprire StarUML si esegue sempre `git pull`.
 
 La regola copre due rischi del registro: conflitti di merge e perdita di lavoro sul modello. Ha un costo: due issue che toccano il modello non possono essere in lavorazione insieme, e le issue sui diagrammi vanno pianificate in sequenza.
@@ -170,7 +171,7 @@ Le attività di configurazione seguono il ritmo degli sprint:
 
 Questa sezione si aggiorna come ogni altro documento: una modifica nasce come issue e passa da una pull request (sezione 3.5). I documenti con tabella versioni in testa (Project Plan, Requisiti, questo documento) aggiungono una riga a ogni revisione, con data e modifiche; la storia di Git fa da storico fine. La consegna finale è un unico PDF diviso in capitoli con i sei documenti, con le immagini dei diagrammi UML esportate nel testo. Dopo la consegna si correggono eventuali errori, senza creare nuovi documenti né nuovi progetti Java.
 
-## 4\. People management e organizzazione del team
+## 4. People management e organizzazione del team
 
 Il team ha quattro persone, ciascuna con un'area di responsabilità, e lavora come una squadra agile senza gerarchia rigida: le decisioni si prendono per consenso e, se il consenso manca, decide il Project Manager motivando la scelta.
 
@@ -218,13 +219,13 @@ Ogni membro deve dare un contributo significativo. A fine progetto ciascuno valu
 
 Le statistiche si leggono insieme al registro ore e non diventano una misura di produttività.
 
-## 5\. Dati a consuntivo
+## 5. Dati a consuntivo
 
 Questa sezione si compila a fine progetto (sprint 4): le ore stimate vengono dal Project Plan, le altre colonne dal registro ore e dalle statistiche di GitHub.
 
 ### 5.1 Ore per sprint e per membro
 
-La stima per ciascun membro è di 4 ore nello sprint 0 e 8 ore in ciascuno degli sprint 1-4, per un totale di 36 ore.
+La stima per ciascun membro è di 4 ore nello sprint 0 e 8 ore in ciascuno degli sprint 1-4, per un totale di 36 ore. Nello Sprint 0 le sub-issue (#4–#8) non vengono contate a parte perché già sommate nella main issue #3.
 
 |Sprint|Periodo|Ore stimate (team)|Testa|Rota|Maggioni|Benigni|Ore effettive (team)|
 |-|-|-|-|-|-|-|-|
