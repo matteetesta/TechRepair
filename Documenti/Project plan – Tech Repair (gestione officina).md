@@ -10,8 +10,9 @@ Tech Repair è il sistema che il nostro team di quattro persone sviluppa per il 
 |1.1.0|09/11/2026|Revisione e allineamento di date, ore e work package agli obiettivi per sprint (sezione 2)|
 |1.1.1|14/11/2026|Correzione proprietario repository, allineamento flussi di eccezione e chiarimento WP2|
 |1.1.2|16/11/2026|Label solo per issue di particolare importanza, aggiunta Priority board, riunione settimanale fissata al lunedì dalle 14:00 alle 16:00|
+|1.1.3|19/11/2026|Regola Critical Section estesa fino al merge su main, allineamento .gitignore/micro-modifiche e pulizia formattazione|
 
-## 1\. Introduction
+## 1. Introduction
 
 Tech Repair gestisce il percorso di un dispositivo in riparazione, dall'accettazione in officina alla consegna e al pagamento.
 
@@ -42,7 +43,7 @@ Rientra tutto il flusso sopra, con dati persistiti in un database embedded e int
 
 Requisiti per il progetto di ingegneria del software AA 2026/27 (Gargantini, Bonfanti); materiale del corso, incluso il capitolo 2 del libro.
 
-## 2\. Process model
+## 2. Process model
 
 Seguiamo un processo iterativo e incrementale ispirato a Scrum, organizzato in time box (sprint) associati a milestone GitHub (quattro settimane a carico ridotto per lo sprint 0, due settimane ciascuno per gli sprint 1-4 e quattro giorni di margine finale per lo sprint 5), in cui requisiti e modelli vengono raffinati a ogni iterazione; il progetto è quasi completo il 4 gennaio 2027.
 
@@ -68,7 +69,7 @@ Il team è piccolo e ha poche ore a testa, quindi servono iterazioni brevi e ver
 
 Le differenze tra questo piano e il processo realmente seguito saranno riportate nel Documento 2 (Gestione del progetto).
 
-## 3\. Organization of the project
+## 3. Organization of the project
 
 Il team è composto da quattro persone, ciascuna con un'area di responsabilità specifica, operando come una squadra agile senza una gerarchia rigida e coordinandosi per adattamento reciproco.
 
@@ -87,7 +88,7 @@ Secondo uno stile di gestione orientato alla relazione e all'integrazione, tutte
 * **Riunione settimanale:** Incontro periodico del team finalizzato all'allineamento sullo stato di avanzamento delle attività (stato dei task sulla lavagna Kanban) e alla pianificazione degli obiettivi futuri, il quale si tiene ogni lunedì dalle 14:00 alle 16:00.
 * **Chat di gruppo:** Utilizzata unicamente per comunicazioni rapide, urgenze operative o scambi informativi interni. Questo canale non ha alcuna validità decisionale ai fini dello sviluppo del progetto.
 
-## 4\. Standards, guidelines, procedures
+## 4. Standards, guidelines, procedures
 
 Tutto il lavoro passa da GitHub e segue regole comuni su repository, codice, modelli e documenti, per rendere chiaro chi ha fatto cosa.
 
@@ -99,23 +100,23 @@ Tutto il lavoro passa da GitHub e segue regole comuni su repository, codice, mod
   * **`Documenti/`:** Contiene la documentazione ufficiale e il file di progetto StarUML.
   * **`Codice/`:** Contiene i progetti Eclipse.
 * **Nomenclatura progetti Eclipse:** Devono tassativamente essere usati nomi caratteristici o nomenclature. Sono vietati nomi generici.
-* **Gestione `.gitignore`:** Il file `.gitignore` deve escludere i file `.class` e la cartella `target/`. I file `.project`, `.classpath` e `pom.xml` devono essere sempre committati per garantire l'allineamento dell'ambiente di sviluppo.
+* **Gestione `.gitignore`:** Il file `.gitignore` deve escludere i file `.class`, le cartelle `target/`, `bin/`, `.settings/` e i file di log. I file `.project`, `.classpath` e `pom.xml` devono essere sempre committati per garantire l'allineamento dell'ambiente di sviluppo.
 
 **Procedura Git e Kanban**
 
-* **Branch `main` stabile (baseline):** Il ramo `main` rappresenta la linea di base (baseline) degli elementi di configurazione approvati (codice, modelli e documenti). Su di esso vengono effettuate solo modifiche minori che non necessitano di review.
+* **Branch `main` stabile (baseline):** Il ramo `main` rappresenta la linea di base (baseline) degli elementi di configurazione approvati (codice, modelli e documenti). Su di esso vengono effettuate direttamente solo piccole modifiche che non necessitano di review (a cura di Matteo Testa o Alessandro Benigni).
 * **Apertura dei branch:** Ogni attività parte da un'issue con milestone e assegnatario; le label (documentation, enhancement, bug e Critical Section) sono riservate alle issue di particolare importanza. Il branch associato deve essere creato direttamente dall'interfaccia web dell'issue su GitHub, accettando la nomenclatura automatica predefinita.
 * **Commit piccoli e frequenti:** Ogni commit deve avere un titolo esplicativo ed eventuale descrizione dettagliata. Sono vietati messaggi generici.
 * **Una pull request per ogni branch:** Ogni branch richiede l'apertura di una pull request (PR), che risulterà nativamente collegata all'issue di origine grazie alla creazione guidata del ramo.
 * **Gestione file StarUML (`.mdj`):** Essendo un file unico e non integrabile via merge testuale, è tassativo lavorarci una sola persona alla volta.
 
   * Chi inizia a lavorarci deve "prenotarlo" tramite il Project Manager che contrassegna la issue con una label "Critical Section".
-  * Nessun altro può modificare il modello finché l'issue associata non passa nello stato "In Review".
+  * Nessun altro può modificare il modello finché l'issue associata non viene chiusa con il merge su `main` (stato "Done") e la label "Critical Section" non viene rimossa.
   * È obbligatorio eseguire un `git pull` immediatamente prima di aprire StarUML.
 
 **Pull request e review**
 
-* **Quasi nessun push diretto su `main`:** Ogni modifica passa da una pull request, tranne modifiche minori che non necessitano di review.
+* **Quasi nessun push diretto su `main`:** Ogni modifica passa da una pull request, tranne piccole modifiche che non necessitano di review (da parte del Configuration Manager o di Alessandro Benigni per necessità).
 * **Approvazione mirata:** Per poter effettuare il merge, serve l'approvazione del Project Manager. In caso di sua indisponibilità, l'approvazione può essere concessa da un membro del team diverso dall'autore, scelto in base alla competenza specifica del task.
 * **Strategia di merge:** Il merge viene eseguito solo dopo aver ottenuto l'approvazione. Si utilizza il merge normale (Create a merge commit) e non lo squash, per mantenere intatta la cronologia dei singoli commit nella storia del progetto.
 * **Statistiche finali:** A fine progetto, il Documento 2 (Gestione del progetto) riporterà i dati analitici su commit, PR aperte e review effettuate per ciascun componente del team.
@@ -132,7 +133,7 @@ Tutto il lavoro passa da GitHub e segue regole comuni su repository, codice, mod
 * **Modellazione UML:** Gestita tramite StarUML 5. Il file di progetto contenente tutti i diagrammi deve essere salvato nel repository.
 * **Documentazione finale:** Tutta la documentazione ufficiale viene organizzata e consegnata in un unico file PDF strutturato a capitoli, contenente le immagini dei diagrammi UML esportate direttamente nel testo.
 
-## 5\. Management activities
+## 5. Management activities
 
 La strategia di gestione pone come priorità assoluta un'analisi e una progettazione solide, seguite da un'implementazione funzionante dei flussi principali del sistema. Il progetto deve essere in stato di quasi completamento entro il 4 gennaio 2027, con consegna definitiva fissata entro l'8 gennaio 2027.
 
@@ -173,7 +174,7 @@ La strategia di gestione pone come priorità assoluta un'analisi e una progettaz
 
 * **Allineamento settimanale:** Riunione periodica volta a verificare lo stato di avanzamento dei task e a ridistribuire le attività in caso di colli di bottiglia.
 
-## 6\. Potential risks
+## 6. Potential risks
 
 I rischi più pesanti sono la sottostima del tempo di modellazione e la distribuzione non uniforme del carico; il registro viene rivisto a ogni fine sprint.
 
@@ -189,7 +190,7 @@ I rischi più pesanti sono la sottostima del tempo di modellazione e la distribu
 |Cicli tra package nel codice|Media|Medio|Controllo con JDepend o Structure101 a fine sprint|Architetto|
 |File StarUML o `.project` non committati|Bassa|Alto|Commit regolari, prova di clone pulito prima della consegna|Project Manager|
 
-## 7\. Staffing
+## 7. Staffing
 
 Quattro persone con ruoli di responsabilità distinti, ma tutte coinvolte in modellazione, codice e test, per 36 ore ciascuna (4 ore a testa nello sprint 0 e 4 ore a settimana a testa negli sprint 1-4, pari a 9 settimane lavorative equivalenti da 4 ore).
 
@@ -204,7 +205,7 @@ I ruoli indicano chi risponde di un'area, non chi la svolge da solo: ogni diagra
 
 Ogni membro deve dare un contributo significativo. A fine progetto ciascuno valuta in privato il proprio impegno e quello dei compagni, come previsto dal corso.
 
-## 8\. Methods and techniques
+## 8. Methods and techniques
 
 Usiamo i metodi visti a lezione per ogni attività, con UML come linguaggio comune tra requisiti, design e codice.
 
@@ -217,7 +218,7 @@ Usiamo i metodi visti a lezione per ogni attività, con UML come linguaggio comu
 * **Refactoring:** Attività svolte e documentate nel Documento 6 (Maintenance) durante lo sprint 4, con eventuali correzioni nello sprint 5.
 * **Configuration management:** GitHub con issue, branch, pull request e code review.
 
-## 9\. Quality assurance
+## 9. Quality assurance
 
 La qualità si controlla con revisioni sistematiche, test automatici e metriche, verificati a ogni fine sprint.
 
@@ -234,7 +235,7 @@ La qualità si controlla con revisioni sistematiche, test automatici e metriche,
   * Le issue dello sprint sono chiuse o riassegnate con motivazione.
   * I documenti dello sprint sono aggiornati e committati.
 
-## 10\. Work packages
+## 10. Work packages
 
 Il lavoro è diviso in sette work package, ciascuno con ore, sprint e responsabile; la somma delle ore per work package e per sprint coincide con il budget di 144 ore e con gli obiettivi della sezione 2.
 
@@ -248,7 +249,7 @@ Il lavoro è diviso in sette work package, ciascuno con ore, sprint e responsabi
 
 Ogni work package parte dai deliverable del precedente (requisiti, modelli, design, codice, test); gestione e rifinitura accompagnano l'intero progetto.
 
-## 11\. Resources
+## 11. Resources
 
 Le risorse sono quattro persone per 36 ore ciascuna e strumenti tutti gratuiti, quindi il budget si misura solo in ore.
 
@@ -259,7 +260,7 @@ Le risorse sono quattro persone per 36 ore ciascuna e strumenti tutti gratuiti, 
 * **Analisi del codice:** Strumenti di metriche e copertura.
 * **Hardware:** I computer personali dei membri e un PC dedicato per la demo all'esame orale.
 
-## 12\. Budget and schedule
+## 12. Budget and schedule
 
 Il budget è di 144 ore (36 a testa: 4 ore nello sprint 0 di quattro settimane e 4 ore a settimana per le 8 settimane degli sprint 1-4, dal 12 ottobre 2026 al 4 gennaio 2027, equivalenti a 9 settimane lavorative da 4 ore a testa) e oltre il 70% (101 ore su 144, pari al 70,1% nei WP1-WP4) va a gestione, requisiti, modellazione e design.
 
@@ -277,7 +278,7 @@ Il budget è di 144 ore (36 a testa: 4 ore nello sprint 0 di quattro settimane e
 * **Il calendario proposto copre sei sprint:** I primi cinque (sprint 0-4, dal 12 ottobre 2026 al 4 gennaio 2027) portano il progetto quasi a compimento; lo sprint 4 (22 dicembre 2026 - 4 gennaio 2027) e lo sprint 5 (5-8 gennaio 2027, senza ore aggiuntive oltre al completamento del WP7) coprono le vacanze natalizie e garantiscono un margine finale per correzioni, revisione incrociata, prova su clone pulito e consegna.
 * **La consegna interna è fissata all'8 gennaio 2027:** Il progetto completo va consegnato almeno cinque giorni prima della presentazione, quindi la presentazione non può cadere prima del 13 gennaio 2027.
 
-## 13\. Changes
+## 13. Changes
 
 Ogni modifica a requisiti, piano o documenti nasce come issue GitHub e passa da una pull request, così resta tracciata.
 
@@ -291,7 +292,7 @@ Ogni modifica a requisiti, piano o documenti nasce come issue GitHub e passa da 
 
 Il Project Plan ha una tabella delle versioni in testa: ogni revisione aggiunge una riga con data e modifiche. I documenti nel repository sono versionati con Git, quindi la cronologia dei commit fa da storico.
 
-## 14\. Delivery
+## 14. Delivery
 
 Consegniamo un repository GitHub completo e funzionante, con tutta la documentazione, almeno cinque giorni prima della presentazione.
 
