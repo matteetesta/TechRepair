@@ -60,8 +60,8 @@ Ogni flusso di eccezione (preventivo rifiutato, pezzo fuori produzione, richiest
 ### 2.5 Evidenze di iterazione finora
 
 * **Project Plan.** Quattro versioni in cinque settimane: 1.0.0 (12/10), 1.1.0 (09/11, riallineamento di date, ore e work package agli obiettivi per sprint), 1.1.1 (14/11, correzione del proprietario del repository, allineamento dei flussi di eccezione, chiarimento del WP2) e 1.1.2 (16/11, label solo per le issue importanti, Priority board, riunione del lunedì).
-* **Requisiti.** Sette versioni tra l'11 e il 15 novembre (0.1-0.8), con correzioni dopo revisione (0.5), rimozione di classi che non sono entità salvate (0.6) e allineamento del modello del dominio al class diagram (0.7). I diagrammi UML sono ancora da inserire nel documento.
-* **Sprint 0.** La scadenza era il 9 novembre, ma la milestone è ancora aperta (1 issue su 9 non chiusa al 16 novembre) perché si attende l'approvazione del Project Plan da parte del Prof. Gargantini. È il primo scostamento rispetto al calendario iniziale; date e ore sono state riallineate nella revisione 1.1.0 del piano.
+* **Requisiti.** Nove versioni tra l'11 e il 18 novembre (0.1-0.9, integrate su `main` il 19/11), con correzioni dopo revisione (0.5), rimozione di classi che non sono entità salvate (0.6), allineamento del modello del dominio al class diagram (0.7), revisione degli use case (0.8) e inserimento delle immagini SVG di Use Case Diagram e Class Diagram del dominio (0.9).
+* **Sprint 0.** La scadenza era il 9 novembre, ma la milestone è rimasta aperta fino all'approvazione formale del Project Plan da parte del Prof. Gargantini (issue #14 chiusa il 18/11, milestone chiusa il 19/11 con 9/9 issue completate). È stato il primo scostamento rispetto al calendario iniziale; date e ore sono state riallineate nella revisione 1.1.0 del piano.
 
 ### 2.6 Corrispondenza con Scrum, Kanban e MDA
 
@@ -250,8 +250,8 @@ La stima per ciascun membro è di 4 ore nello sprint 0 e 8 ore in ciascuno degli
 
 |Sprint|Scostamento rispetto al piano|Causa|Azione|
 |-|-|-|-|
-|Sprint 0|Scadenza del 9 novembre superata: 1 issue su 9 ancora aperta al 16/11|Attesa dell'approvazione del Project Plan da parte del Prof. Gargantini|Date, ore e work package riallineati nel Project Plan 1.1.0; milestone da chiudere dopo l'approvazione del piano|
-|Sprint 1|Chiuso il 19/11, quattro giorni prima della scadenza del 23/11|Lavoro dello sprint completato in anticipo|Sprint 2 avviato subito, senza modificare il Project Plan|
+|Sprint 0|Scadenza del 9 novembre superata (chiusura il 19/11); 13 ore effettive su 16 stimate (Rota e Maggioni a 0h)|Attesa approvazione del Project Plan da parte del Prof. Gargantini (ottenuta il 18/11 su issue #14); attività iniziali di setup e piano a carico di PM e Resp. sviluppo|Date, ore e work package riallineati nel Project Plan 1.1.0; milestone chiusa il 19/11 (9/9 issue); ore non spese compensabili negli sprint successivi|
+|Sprint 1|Chiuso il 19/11, quattro giorni prima della scadenza del 23/11; 35 ore effettive su 32 stimate (+3h, incluse 12h di revisione)|Lavoro dello sprint completato in anticipo con revisioni approfondite su requisiti, specifica logica e documento 2|Sprint 2 avviato il 19/11 senza modificare il calendario del Project Plan; +3h da compensare rispetto al monte ore residuo|
 |Sprint 2|Avvio anticipato dal 24/11 al 19/11, con scadenza del 7/12 e 32 ore invariate|Sprint 1 concluso prima|Tempo extra usato come margine per il blocco del file StarUML|
 |Sprint 3||||
 |Sprint 4||||
