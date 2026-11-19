@@ -1,4 +1,4 @@
-package techrepair.techrepair;
+package it.unibg.techrepair;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

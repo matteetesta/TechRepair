@@ -1,4 +1,4 @@
-package techrepair.techrepair;
+package it.unibg.techrepair;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
