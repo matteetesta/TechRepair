@@ -281,7 +281,7 @@ Tech Repair è un'applicazione autonoma a riga di comando (console) con database
 
 ### 4.1 Use case diagram
 
-![Use Case Diagram](Immagini/UseCaseDiagram.svg)
+![Use Case Diagram](Immagini/useCaseDiagram.svg)
 
 Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. Gli use case principali sono *Accetta Dispositivo e Crea Scheda*, *Invia Preventivo*, *Ordina Pezzo di Ricambio*, *Consegna Dispositivo Riparato*, *Consultazione* e *Gestisci Catalogo Ricambi*; *Genera Ricevuta di Ingresso* (incluso in *Accetta Dispositivo e Crea Scheda*) e *Registra Pagamento* (incluso sia in *Accetta Dispositivo e Crea Scheda* sia in *Consegna Dispositivo Riparato*) sono use case inclusi. *Ordina Pezzo di Ricambio* è uno use case autonomo, svolto dal Responsabile Magazzino dopo l'approvazione del preventivo; la verifica della reperibilità dei ricambi esauriti avviene invece dentro *Invia Preventivo*, dove il Responsabile Magazzino è attore secondario.
 
@@ -365,7 +365,7 @@ Gli attori sono il Cliente, il Tecnico Riparatore e il Responsabile Magazzino. G
 
 ## 5. Modello del dominio
 
-![Class Diagram del Dominio](Immagini/ClassDiagram_Dominio.svg)
+![Class Diagram del Dominio](Immagini/classDiagramDominio.svg)
 
 Il modello del dominio mostra i concetti dell'officina e le relazioni tra loro, senza dettagli di implementazione (il class diagram di design è nel Documento 4). Le classi principali, con gli attributi essenziali in notazione CamelCase, sono le seguenti:
 
