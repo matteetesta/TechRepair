@@ -1,7 +1,6 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
+import java.math.BigDecimal;
 
 /**
  * 
@@ -17,6 +16,7 @@ class AccettataState extends StatoSchedaState {
     /**
      * @return
      */
+    @Override
     public StatoScheda getStato() {
         // TODO implement here
         return null;
@@ -25,6 +25,7 @@ class AccettataState extends StatoSchedaState {
     /**
      * @param scheda
      */
+    @Override
     public void avviaDiagnosi(SchedaRiparazione scheda) {
         // TODO implement here
     }
@@ -33,6 +34,7 @@ class AccettataState extends StatoSchedaState {
      * @param scheda 
      * @param costo
      */
+    @Override
     public void impostaCostoManodopera(SchedaRiparazione scheda, BigDecimal costo) {
         // TODO implement here
     }
@@ -41,6 +43,7 @@ class AccettataState extends StatoSchedaState {
      * @param scheda 
      * @param ricambio
      */
+    @Override
     public void aggiungiRicambio(SchedaRiparazione scheda, Ricambio ricambio) {
         // TODO implement here
     }
@@ -48,13 +51,10 @@ class AccettataState extends StatoSchedaState {
     /**
      * @param scheda
      */
+    @Override
     public void rinuncia(SchedaRiparazione scheda) {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
-    public abstract StatoScheda getStato();
 
 }

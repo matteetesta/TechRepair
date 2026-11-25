@@ -1,7 +1,7 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
  * 

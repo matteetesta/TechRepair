@@ -1,18 +1,11 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
+import java.math.BigDecimal;
 
 /**
  * Classe di utilita' (final) con le regole di validazione dell'input (Specifica sez. 7, RF-18). Ogni metodo solleva DatiNonValidiException.
  */
 public final class Validatore {
-
-    /**
-     * Default constructor
-     */
-    public Validatore() {
-    }
 
     /**
      * 

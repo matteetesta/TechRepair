@@ -1,7 +1,6 @@
 package it.unibg.techrepair.saldo;
 
-import java.io.*;
-import java.util.*;
+import java.math.BigDecimal;
 
 /**
  * Restituisce -10,00 (rimborso della diagnosi).
@@ -18,17 +17,9 @@ public class RimborsoNonRiparabileStrategy implements CalcoloSaldoStrategy {
      * @param totalePreventivo 
      * @return
      */
+    @Override
     public BigDecimal calcolaSaldo(BigDecimal totalePreventivo) {
         // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param totalePreventivo 
-     * @return
-     */
-    public BigDecimal calcolaSaldo(BigDecimal totalePreventivo) {
-        // TODO implement CalcoloSaldoStrategy.calcolaSaldo() here
         return null;
     }
 

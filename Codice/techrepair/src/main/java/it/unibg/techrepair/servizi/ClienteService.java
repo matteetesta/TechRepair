@@ -5,8 +5,6 @@ import it.unibg.techrepair.repository.DispositivoRepository;
 import it.unibg.techrepair.dominio.Cliente;
 import it.unibg.techrepair.dominio.Dispositivo;
 
-import java.io.*;
-import java.util.*;
 
 /**
  * Use case Accetta Dispositivo e Crea Scheda (anagrafica).

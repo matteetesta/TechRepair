@@ -8,8 +8,8 @@ import it.unibg.techrepair.dominio.Reperibilita;
 import it.unibg.techrepair.dominio.SchedaRiparazione;
 import it.unibg.techrepair.dominio.OrdineAcquisto;
 
-import java.io.*;
-import java.util.*;
+import java.util.List;
+import java.math.BigDecimal;
 
 /**
  * Use case Gestisci Catalogo Ricambi, verifica reperibilita' (Invia Preventivo) e Ordina Pezzo di Ricambio (lato Responsabile Magazzino).

@@ -2,8 +2,7 @@ package it.unibg.techrepair.repository;
 
 import it.unibg.techrepair.dominio.Ricambio;
 
-import java.io.*;
-import java.util.*;
+import java.util.List;
 
 /**
  * 

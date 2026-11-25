@@ -1,8 +1,5 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
-
 /**
  * 
  */
@@ -17,6 +14,7 @@ class RiparataState extends StatoSchedaState {
     /**
      * @return
      */
+    @Override
     public StatoScheda getStato() {
         // TODO implement here
         return null;
@@ -26,14 +24,11 @@ class RiparataState extends StatoSchedaState {
      * @param scheda 
      * @return
      */
+    @Override
     public Pagamento consegna(SchedaRiparazione scheda) {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @return
-     */
-    public abstract StatoScheda getStato();
 
 }

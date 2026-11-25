@@ -1,8 +1,5 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
-
 /**
  * Observer: riceve gli eventi notificabili di una SchedaRiparazione.
  */

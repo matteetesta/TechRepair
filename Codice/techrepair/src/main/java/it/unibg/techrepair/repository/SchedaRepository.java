@@ -3,8 +3,7 @@ package it.unibg.techrepair.repository;
 import it.unibg.techrepair.dominio.SchedaRiparazione;
 import it.unibg.techrepair.dominio.StatoScheda;
 
-import java.io.*;
-import java.util.*;
+import java.util.List;
 
 /**
  * 

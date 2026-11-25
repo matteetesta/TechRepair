@@ -1,7 +1,6 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
+import java.math.BigDecimal;
 
 /**
  * 
@@ -17,6 +16,7 @@ class InDiagnosiState extends StatoSchedaState {
     /**
      * @return
      */
+    @Override
     public StatoScheda getStato() {
         // TODO implement here
         return null;
@@ -26,6 +26,7 @@ class InDiagnosiState extends StatoSchedaState {
      * @param scheda 
      * @param diagnosi
      */
+    @Override
     public void registraDiagnosi(SchedaRiparazione scheda, String diagnosi) {
         // TODO implement here
     }
@@ -34,6 +35,7 @@ class InDiagnosiState extends StatoSchedaState {
      * @param scheda 
      * @param costo
      */
+    @Override
     public void impostaCostoManodopera(SchedaRiparazione scheda, BigDecimal costo) {
         // TODO implement here
     }
@@ -42,6 +44,7 @@ class InDiagnosiState extends StatoSchedaState {
      * @param scheda 
      * @param ricambio
      */
+    @Override
     public void aggiungiRicambio(SchedaRiparazione scheda, Ricambio ricambio) {
         // TODO implement here
     }
@@ -50,6 +53,7 @@ class InDiagnosiState extends StatoSchedaState {
      * @param scheda 
      * @param ricambio
      */
+    @Override
     public void rimuoviRicambio(SchedaRiparazione scheda, Ricambio ricambio) {
         // TODO implement here
     }
@@ -57,6 +61,7 @@ class InDiagnosiState extends StatoSchedaState {
     /**
      * @param scheda
      */
+    @Override
     public void richiediVerificaMagazzino(SchedaRiparazione scheda) {
         // TODO implement here
     }
@@ -64,6 +69,7 @@ class InDiagnosiState extends StatoSchedaState {
     /**
      * @param scheda
      */
+    @Override
     public void inviaPreventivo(SchedaRiparazione scheda) {
         // TODO implement here
     }
@@ -71,13 +77,10 @@ class InDiagnosiState extends StatoSchedaState {
     /**
      * @param scheda
      */
+    @Override
     public void rinuncia(SchedaRiparazione scheda) {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
-    public abstract StatoScheda getStato();
 
 }

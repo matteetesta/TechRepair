@@ -1,8 +1,5 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
-
 /**
  * 
  */
@@ -17,6 +14,7 @@ class InVerificaMagazzinoState extends StatoSchedaState {
     /**
      * @return
      */
+    @Override
     public StatoScheda getStato() {
         // TODO implement here
         return null;
@@ -25,6 +23,7 @@ class InVerificaMagazzinoState extends StatoSchedaState {
     /**
      * @param scheda
      */
+    @Override
     public void confermaRicambiOrdinabili(SchedaRiparazione scheda) {
         // TODO implement here
     }
@@ -33,6 +32,7 @@ class InVerificaMagazzinoState extends StatoSchedaState {
      * @param scheda 
      * @param ricambio
      */
+    @Override
     public void segnalaFuoriProduzione(SchedaRiparazione scheda, Ricambio ricambio) {
         // TODO implement here
     }
@@ -40,13 +40,10 @@ class InVerificaMagazzinoState extends StatoSchedaState {
     /**
      * @param scheda
      */
+    @Override
     public void rinuncia(SchedaRiparazione scheda) {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
-    public abstract StatoScheda getStato();
 
 }

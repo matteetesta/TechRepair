@@ -2,8 +2,6 @@ package it.unibg.techrepair.repository;
 
 import it.unibg.techrepair.dominio.OrdineAcquisto;
 
-import java.io.*;
-import java.util.*;
 
 /**
  * 

@@ -1,7 +1,6 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
+import java.math.BigDecimal;
 
 /**
  * Senza identificativo proprio: il costruttore pubblico VoceRicambio(ricambio, stato) basta anche per la ricostruzione dal database (non tocca la giacenza).

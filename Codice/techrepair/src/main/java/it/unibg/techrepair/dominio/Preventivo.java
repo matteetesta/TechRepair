@@ -1,18 +1,14 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 
  */
 public class Preventivo {
-
-    /**
-     * Default constructor
-     */
-    public Preventivo() {
-    }
 
     /**
      * 
@@ -33,11 +29,6 @@ public class Preventivo {
      * 
      */
     private BigDecimal costoManodopera;
-
-    /**
-     * Attributo derivato (Specifica sez. 1, Documento 3). Il generatore lo scrive come campo: va rimosso a mano dopo la generazione, il valore si ottiene sempre da calcolaTotale() (Documento 4, sez. 4.6).
-     */
-    private BigDecimal totaleCalcolato;
 
     /**
      * 

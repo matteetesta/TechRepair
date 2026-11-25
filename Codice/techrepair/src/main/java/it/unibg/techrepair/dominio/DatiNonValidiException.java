@@ -2,13 +2,13 @@ package it.unibg.techrepair.dominio;
 
 import java.lang.RuntimeException;
 
-import java.io.*;
-import java.util.*;
 
 /**
  * Sollevata dal Validatore (RF-18).
  */
 public class DatiNonValidiException extends RuntimeException {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor

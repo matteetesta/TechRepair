@@ -1,8 +1,5 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
-
 /**
  * 
  */
@@ -17,14 +14,11 @@ class ChiusaState extends StatoSchedaState {
     /**
      * @return
      */
+    @Override
     public StatoScheda getStato() {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @return
-     */
-    public abstract StatoScheda getStato();
 
 }

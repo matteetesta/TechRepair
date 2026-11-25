@@ -1,7 +1,7 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
+import java.util.Set;
+import java.time.LocalDate;
 
 /**
  * 

@@ -8,8 +8,7 @@ import it.unibg.techrepair.dominio.Dispositivo;
 import it.unibg.techrepair.dominio.Pagamento;
 import it.unibg.techrepair.dominio.StatoScheda;
 
-import java.io.*;
-import java.util.*;
+import java.util.List;
 
 /**
  * Ciclo di vita della scheda lato Tecnico: accettazione, diagnosi, riparazione, consegna e consultazione.

@@ -2,13 +2,13 @@ package it.unibg.techrepair.dominio;
 
 import java.lang.RuntimeException;
 
-import java.io.*;
-import java.util.*;
 
 /**
  * Sollevata da StatoSchedaState per le transizioni non ammesse.
  */
 public class OperazioneNonConsentitaException extends RuntimeException {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor

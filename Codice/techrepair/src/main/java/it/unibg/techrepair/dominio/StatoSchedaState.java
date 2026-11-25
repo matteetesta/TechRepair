@@ -1,7 +1,7 @@
 package it.unibg.techrepair.dominio;
 
-import java.io.*;
-import java.util.*;
+import java.util.Set;
+import java.math.BigDecimal;
 
 /**
  * State: comportamento della SchedaRiparazione nello stato corrente. L'implementazione di default di ogni evento solleva OperazioneNonConsentitaException; gli stati concreti ridefiniscono solo le transizioni ammesse (Specifica sez. 5).
