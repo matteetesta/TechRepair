@@ -19,8 +19,8 @@ La documentazione ufficiale e i modelli UML si trovano nella cartella [`Document
 - **[Documento 3 – Specifica dei Requisiti (IEEE 830)](Documenti/TR_Requisiti_Documento3.md):** elicitazione dei requisiti, scenari d'uso, requisiti funzionali e non funzionali, attributi di qualità, casi d'uso, modello del dominio e matrice di tracciabilità.
 - **Modelli e diagrammi UML:**
   - Progetto StarUML: [`Documenti/TR_DiagramsUML.mdj`](Documenti/TR_DiagramsUML.mdj)
-  - [Use Case Diagram](Documenti/Immagini/UseCaseDiagram.svg)
-  - [Class Diagram del Dominio](Documenti/Immagini/ClassDiagram_Dominio.svg)
+  - [Use Case Diagram](Documenti/Immagini/useCaseDiagram.svg)
+  - [Class Diagram del Dominio](Documenti/Immagini/classDiagramDominio.svg)
 - **[Specifica Logica e Funzionale (documento interno)](Documenti/Interni/Specifica%20Logica%20e%20Funzionale%20%E2%80%93%20Tech%20Repair.md):** dettaglio operativo di regole contabili, gestione scorte, macchina a stati della scheda e regole di validazione.
 
 ## Team e ruoli
